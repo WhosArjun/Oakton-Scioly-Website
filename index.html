@@ -6,13 +6,15 @@
 <title>Oakton Cougars Science Olympiad</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, sans-serif; background: #f9f9fb; }
+  body { font-family: system-ui, sans-serif; background: #e6e6edcf; }
   .hero {
     background: #0a0a2e; padding: 3.5rem 2rem 4rem;
     text-align: center; position: relative; overflow: hidden;
+    
   }
   .stars { position: absolute; inset: 0; pointer-events: none; }
-  .star { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.8); animation: twinkle 3s infinite alternate; }
+  .star { position: absolute; border-radius: 50%; background: rgba(237, 233, 233, 0.8); animation: twinkle 3s infinite alternate; }
+  
   @keyframes twinkle { from { opacity: 0.2; } to { opacity: 1; } }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 6px;
@@ -102,6 +104,80 @@
   }
   .states-banner .big { font-size: 1.6rem; font-weight: 700; }
   .states-banner .sub { font-size: 0.9rem; opacity: 0.75; margin-top: 4px; }
+
+  /* FOOTER */
+.footer {
+  margin-top: 3rem;
+  background: #0a0a2e;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  color: white;
+  padding: 2.2rem 1.5rem;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.footer-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #dbe4ff;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  transition: all 0.18s ease;
+}
+
+.footer-link:hover {
+  background: #3344cc;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+}
+
+/* CAPTAIN BIOS */
+.captain-bio {
+  margin-top: 0.9rem;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #666;
+  text-align: left;
+  background: #f8f9fc;
+  border: 1px solid #e5e7eb;
+  padding: 0.8rem;
+  border-radius: 10px;
+}
+.captain-bio {
+  font-style: italic;
+  border-left: 3px solid #3333cc;
+}
 </style>
 </head>
 <body>
@@ -231,7 +307,13 @@
       <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">CH</div><div class="cname">Chunmin Huang</div><span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span></div>
       <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">CH</div><div class="cname">Chunjie Huang</div><span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span></div>
       <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">LK</div><div class="cname">Linus Koepcke</div><span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span></div>
-      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div><div class="cname">Sara Shaddarsanam</div><span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span></div>
+      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div><div class="cname">Sara Shaddarsanam</div>
+        <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
+        <p class="captain-bio">
+          “Hellooo! I’m Sara. I’ve been in SciOly since freshman year.
+          I have an addiction to cake and Tinkaton.”
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -525,6 +607,45 @@
     starsEl.appendChild(s);
   }
 </script>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+
+    <div class="footer-brand">
+      <div class="footer-title">Oakton HS Science Olympiad</div>
+      <div class="footer-sub">
+        Oakton High School · Vienna, Virginia
+      </div>
+      <div class="footer-sub">
+      2900 Sutton Rd, Vienna VA 22182
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="https://www.instagram.com/oaktonscioly?igsh=MWk1dGV4bDVhaWdocg%3D%3D&utm_source=qr" target="_blank" class="footer-link">
+        📸 Instagram
+      </a>
+
+
+      <a href="https://www.soinc.org/" target="_blank" class="footer-link">
+        🧪 Science Olympiad
+      </a>
+
+      <a href="ohssciol@gmail.com" class="footer-link">
+        ✉️ Gmail
+      </a>
+
+      <a href="https://www.virginiaso.org/" target = "_blank" class = "footer-link">
+        🐦 VASO (Virginia Science Olympiad)
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Oakton Scioly · Built for the 2025–2026 season
+    </div>
+
+  </div>
+</footer>
 
 </body>
 </html>
