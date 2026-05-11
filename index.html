@@ -178,6 +178,56 @@
   font-style: italic;
   border-left: 3px solid #3333cc;
 }
+/* ABOUT TAB */
+.about-hero {
+  background: linear-gradient(135deg,#0a0a2e,#2222aa);
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+}
+
+.about-hero h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.7rem;
+}
+
+.about-hero p {
+  color: rgba(255,255,255,0.78);
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+  gap: 16px;
+}
+
+.about-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1.2rem;
+}
+
+.about-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.about-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: #111;
+}
+
+.about-card p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+}
 </style>
 </head>
 <body>
@@ -187,7 +237,7 @@
   <div style="position:relative;z-index:1;">
     <div class="hero-badge">Oakton HS Science Olympiad</div>
     <h1>Oakton <span>Scioly</span></h1>
-    <p class="hero-sub">Oakton High School · Vienna, Virginia · 2025–2026 Season</p>
+    <p class="hero-sub">Oakton High School · Vienna, Virginia</p>
     <div class="hero-stats">
       <div class="hero-stat"><div class="num">3</div><div class="lbl">Teams</div></div>
       <div class="hero-stat"><div class="num">42</div><div class="lbl">Members</div></div>
@@ -201,6 +251,8 @@
   <button class="tab-btn active" onclick="showTab('teams',this)">👥 Teams</button>
   <button class="tab-btn" onclick="showTab('captains',this)">⭐ Captains</button>
   <button class="tab-btn" onclick="showTab('awards',this)">🏆 Awards</button>
+  <button class = "tab-btn" onclick = "showTab('resources', this)"> 📚 Resources</button>
+  <button class="tab-btn" onclick="showTab('about',this)">📖 About</button>
 </div>
 
 <!-- TEAMS -->
@@ -573,7 +625,68 @@
         </div>
       </div>
 
+      
+
     </div>
+  </div>
+</div>
+
+  <!-- ABOUT -->
+<div id="tab-about" class="tab-content">
+  <div class="section">
+
+    <div class="about-hero">
+      <h2>About Oakton Scioly</h2>
+      <p>
+        Oakton Science Olympiad is a student-led STEM competition team
+        focused on science, engineering, inquiry, and teamwork.
+      </p>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-card">
+        <div class="about-icon">🧪</div>
+        <div class="about-title">Who We Are</div>
+        <p>
+          Oakton Scioly competes in invitationals, regional tournaments,
+          and the Virginia State Tournament every season.
+          Our members work across biology, chemistry, physics,
+          engineering, earth science, and coding events.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <div class="about-icon">🏆</div>
+        <div class="about-title">Achievements</div>
+        <p>
+          During the 2025–2026 season, Solar placed 2nd at Virginia States,
+          the best finish in Oakton Scioly history.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <div class="about-icon">⚙️</div>
+        <div class="about-title">Build Events</div>
+        <p>
+          Members design and test engineering devices including
+          helicopters, electric vehicles, hovercrafts,
+          boomilevers, and robot systems.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <div class="about-icon">🌌</div>
+        <div class="about-title">Team Culture</div>
+        <p>
+          Beyond competing, Oakton Scioly is a community built on
+          collaboration, late-night studying, inside jokes,
+          snacks, and teamwork.
+        </p>
+      </div>
+
+    </div>
+
   </div>
 </div>
 
