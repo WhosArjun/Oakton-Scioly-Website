@@ -1,21 +1,58 @@
+cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oakton Cougars Science Olympiad</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, sans-serif; background: #e6e6edcf; }
+  body { font-family: 'Nunito', system-ui, sans-serif; background: #d6eaff; overflow-x: hidden; }
+
+  /* ── CLOUD SKY BACKGROUND ── */
+  .sky {
+    position: fixed; inset: 0; z-index: 0;
+    background: linear-gradient(180deg, #b8d9f8 0%, #d6eaff 60%, #e8f4ff 100%);
+    pointer-events: none; overflow: hidden;
+  }
+  .sun {
+    position: absolute; top: 40px; right: 80px;
+    width: 70px; height: 70px;
+    background: radial-gradient(circle, #ffe066 60%, #ffb300 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 40px 10px #ffe06688;
+    animation: sunPulse 4s ease-in-out infinite alternate;
+  }
+  @keyframes sunPulse { from { box-shadow: 0 0 40px 10px #ffe06688; } to { box-shadow: 0 0 70px 20px #ffe066aa; } }
+  .cloud {
+    position: absolute;
+    display: flex; flex-direction: column; align-items: center;
+    animation: floatCloud linear infinite;
+    filter: drop-shadow(0 4px 8px rgba(100,140,200,0.18));
+  }
+  .cloud-body { position: relative; display: flex; align-items: flex-end; justify-content: center; }
+  .cloud-base { border-radius: 50px; background: white; }
+  .cloud-bump { position: absolute; border-radius: 50%; background: white; }
+  .cloud-label {
+    font-family: 'Fredoka One', cursive; font-size: 11px;
+    color: #5577aa; margin-top: 2px; white-space: nowrap;
+    letter-spacing: 0.02em; text-align: center; padding: 0 4px;
+  }
+  .cloud-emoji { font-size: 16px; line-height: 1; margin-bottom: 1px; }
+  @keyframes floatCloud { from { transform: translateX(110vw); } to { transform: translateX(-320px); } }
+
+  /* ── CONTENT ── */
+  .content { position: relative; z-index: 1; }
+
   .hero {
-    background: #0a0a2e; padding: 3.5rem 2rem 4rem;
+    background: linear-gradient(180deg, #0a0a2e 0%, #1a1a5e 100%);
+    padding: 3.5rem 2rem 4rem;
     text-align: center; position: relative; overflow: hidden;
-    
   }
   .stars { position: absolute; inset: 0; pointer-events: none; }
-  .star { position: absolute; border-radius: 50%; background: rgba(237, 233, 233, 0.8); animation: twinkle 3s infinite alternate; }
-  
-  @keyframes twinkle { from { opacity: 0.2; } to { opacity: 1; } }
+  .star { position: absolute; border-radius: 50%; background: rgba(237,233,233,0.85); animation: twinkle 3s infinite alternate; }
+  @keyframes twinkle { from { opacity: 0.15; } to { opacity: 1; } }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 6px;
     background: rgba(255,255,255,0.1); color: #c0ccff;
@@ -23,219 +60,176 @@
     padding: 5px 14px; border-radius: 20px; margin-bottom: 1.2rem;
     border: 0.5px solid rgba(255,255,255,0.18);
   }
-  .hero h1 { font-size: 2.5rem; font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; }
+  .hero h1 { font-family: 'Fredoka One', cursive; font-size: 3rem; font-weight: 400; color: #fff; line-height: 1.15; margin-bottom: 0.5rem; }
   .hero h1 span { color: #9ab0ff; }
   .hero-sub { font-size: 0.95rem; color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
   .hero-stats { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
-  .hero-stat .num { font-size: 1.9rem; font-weight: 700; color: #fff; }
+  .hero-stat .num { font-family: 'Fredoka One', cursive; font-size: 1.9rem; color: #fff; }
   .hero-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; }
 
   .nav-tabs {
     display: flex; justify-content: center;
-    background: #fff;
-    border-bottom: 1.5px solid #e5e7eb;
+    background: rgba(255,255,255,0.88); backdrop-filter: blur(10px);
+    border-bottom: 1.5px solid #cce0f5;
     position: sticky; top: 0; z-index: 10; padding: 0 0.5rem; overflow-x: auto;
   }
   .tab-btn {
-    padding: 0.8rem 1.1rem; font-size: 13px; font-weight: 500;
-    color: #666; background: none; border: none; cursor: pointer;
+    padding: 0.8rem 1.1rem; font-size: 13px; font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    color: #5577aa; background: none; border: none; cursor: pointer;
     border-bottom: 2.5px solid transparent; transition: color 0.15s, border-color 0.15s; white-space: nowrap;
   }
-  .tab-btn.active { color: #3333cc; border-bottom-color: #3333cc; }
-  .tab-btn:hover:not(.active) { color: #111; }
+  .tab-btn.active { color: #2244cc; border-bottom-color: #2244cc; }
+  .tab-btn:hover:not(.active) { color: #2244cc; }
 
   .section { padding: 1.75rem 1.25rem; max-width: 880px; margin: 0 auto; }
-  .section-title { font-size: 1rem; font-weight: 500; color: #111; margin-bottom: 1.1rem; display: flex; align-items: center; gap: 8px; }
+  .section-title { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #2244cc; margin-bottom: 1.1rem; display: flex; align-items: center; gap: 8px; }
 
   /* TEAMS */
   .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 16px; }
-  .team-card { background: #fff; border: 0.5px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+  .team-card {
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
+    border: 1.5px solid #cce0f5; border-radius: 18px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(100,150,220,0.10);
+  }
   .team-header-bar { padding: 1rem 1.2rem 0.75rem; display: flex; align-items: center; gap: 10px; }
   .team-emoji { font-size: 1.7rem; }
-  .team-name-big { font-size: 0.95rem; font-weight: 500; color: #111; }
-  .team-count { font-size: 11px; color: #999; }
+  .team-name-big { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #1a2a66; }
+  .team-count { font-size: 11px; color: #88aacc; }
   .team-body { padding: 0 1.2rem 1.2rem; display: flex; flex-direction: column; gap: 9px; }
-  .cap-section-label { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 0.05em; }
-  .captain-pill { display: flex; align-items: center; gap: 8px; padding: 6px 9px; border-radius: 8px; }
-  .cap-avatar { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 500; flex-shrink: 0; }
-  .cap-name { font-size: 12px; font-weight: 500; }
-  .members-label { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 0.05em; }
+  .cap-section-label { font-size: 11px; color: #88aacc; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; }
+  .captain-pill { display: flex; align-items: center; gap: 8px; padding: 6px 9px; border-radius: 10px; }
+  .cap-avatar { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; flex-shrink: 0; }
+  .cap-name { font-size: 12px; font-weight: 700; }
+  .members-label { font-size: 11px; color: #88aacc; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; }
   .member-chips { display: flex; flex-wrap: wrap; gap: 4px; }
-  .member-chip { font-size: 11px; color: #555; background: #f3f4f6; border: 0.5px solid #e5e7eb; padding: 3px 8px; border-radius: 11px; }
-  .member-chip.cap { font-weight: 500; }
+  .member-chip { font-size: 11px; color: #446699; background: #e8f2ff; border: 1px solid #cce0f5; padding: 3px 8px; border-radius: 11px; font-weight: 600; }
+  .member-chip.cap { font-weight: 700; }
 
   /* CAPTAINS */
   .captains-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 12px; }
-  .captain-card { background: #fff; border: 0.5px solid #e5e7eb; border-radius: 12px; padding: 1.2rem; text-align: center; }
-  .big-avatar { width: 50px; height: 50px; border-radius: 50%; margin: 0 auto 9px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
-  .captain-card .cname { font-size: 13px; font-weight: 500; color: #111; }
-  .captain-card .cteam { font-size: 11px; margin-top: 5px; padding: 3px 9px; border-radius: 11px; display: inline-block; }
+  .captain-card {
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
+    border: 1.5px solid #cce0f5; border-radius: 18px; padding: 1.2rem; text-align: center;
+    box-shadow: 0 4px 20px rgba(100,150,220,0.10);
+  }
+  .big-avatar { width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 9px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; border: 2px solid white; }
+  .captain-card .cname { font-family: 'Fredoka One', cursive; font-size: 14px; color: #1a2a66; }
+  .captain-card .cteam { font-size: 11px; margin-top: 5px; padding: 3px 9px; border-radius: 11px; display: inline-block; font-weight: 700; }
+  .captain-bio {
+    margin-top: 0.9rem; font-size: 12px; line-height: 1.5; color: #555;
+    text-align: left; background: #f0f6ff; border: 1px solid #cce0f5;
+    padding: 0.8rem; border-radius: 10px; font-style: italic;
+    border-left: 3px solid #3344cc;
+  }
 
   /* AWARDS */
   .filter-row { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 0.85rem; }
-  .filter-btn { padding: 5px 13px; border-radius: 14px; font-size: 12px; cursor: pointer; border: 0.5px solid #e5e7eb; background: #f3f4f6; color: #555; transition: all 0.15s; }
-  .filter-btn.active { background: #3333cc; color: #fff; border-color: #3333cc; }
+  .filter-btn {
+    padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer;
+    border: 1.5px solid #cce0f5; background: rgba(255,255,255,0.85); color: #5577aa;
+    transition: all 0.15s; font-family: 'Nunito', sans-serif; font-weight: 700;
+  }
+  .filter-btn.active { background: #2244cc; color: #fff; border-color: #2244cc; }
   .filter-btn.type-btn.active { background: #0a0a2e; color: #fff; border-color: #0a0a2e; }
 
   .awards-group { display: flex; flex-direction: column; gap: 2rem; }
-  .tourney-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.9rem; padding-bottom: 0.6rem; border-bottom: 0.5px solid #e5e7eb; flex-wrap: wrap; }
-  .tourney-name { font-size: 0.95rem; font-weight: 500; color: #111; }
-  .tourney-date { font-size: 12px; color: #999; }
-  .overall-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+  .tourney-block {
+    background: rgba(255,255,255,0.78); backdrop-filter: blur(8px);
+    border: 1.5px solid #cce0f5; border-radius: 18px; padding: 1.2rem;
+    box-shadow: 0 4px 20px rgba(100,150,220,0.08);
+  }
+  .tourney-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.9rem; padding-bottom: 0.6rem; border-bottom: 1px solid #cce0f5; flex-wrap: wrap; }
+  .tourney-name { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #1a2a66; }
+  .tourney-date { font-size: 12px; color: #88aacc; font-weight: 600; }
+  .overall-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; }
   .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 8px; }
-  .event-card { background: #fff; border: 0.5px solid #e5e7eb; border-radius: 8px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; }
-  .place-badge { font-size: 12px; font-weight: 600; min-width: 32px; text-align: center; padding: 2px 5px; border-radius: 6px; flex-shrink: 0; }
+  .event-card { background: rgba(255,255,255,0.92); border: 1px solid #ddeeff; border-radius: 10px; padding: 0.6rem 0.8rem; display: flex; align-items: center; gap: 8px; }
+  .place-badge { font-family: 'Fredoka One', cursive; font-size: 12px; font-weight: 400; min-width: 32px; text-align: center; padding: 2px 5px; border-radius: 7px; flex-shrink: 0; }
   .p1 { background: #fff4c0; color: #7a5000; }
   .p2 { background: #e8e8e8; color: #333; }
   .p3 { background: #ffe8d6; color: #7a3500; }
-  .ptop { background: #e8eaff; color: #2233aa; }
-  .event-name { font-size: 12px; color: #555; line-height: 1.3; }
+  .ptop { background: #e0eaff; color: #2233aa; }
+  .event-name { font-size: 11.5px; color: #446699; line-height: 1.3; font-weight: 600; }
 
-  .solar-stripe { background: linear-gradient(90deg,#fff8e0,#fff3cc); border-left: 3px solid #e8a800; }
-  .lunar-stripe { background: linear-gradient(90deg,#e5eaff,#d8e0ff); border-left: 3px solid #3344cc; }
-  .eclipse-stripe { background: linear-gradient(90deg,#f0e5ff,#e8d8ff); border-left: 3px solid #7722cc; }
+  .solar-stripe { background: linear-gradient(90deg,rgba(255,248,220,0.9),rgba(255,243,200,0.9)); border-left: 3px solid #e8a800; }
+  .lunar-stripe { background: linear-gradient(90deg,rgba(229,234,255,0.9),rgba(216,224,255,0.9)); border-left: 3px solid #3344cc; }
+  .eclipse-stripe { background: linear-gradient(90deg,rgba(240,229,255,0.9),rgba(232,216,255,0.9)); border-left: 3px solid #7722cc; }
 
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
   .states-banner {
     background: linear-gradient(135deg, #0a0a2e, #2222aa);
-    border-radius: 12px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; color: white;
+    border-radius: 16px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; color: white;
+    box-shadow: 0 8px 30px rgba(20,20,180,0.2);
   }
-  .states-banner .big { font-size: 1.6rem; font-weight: 700; }
+  .states-banner .big { font-family: 'Fredoka One', cursive; font-size: 1.8rem; }
   .states-banner .sub { font-size: 0.9rem; opacity: 0.75; margin-top: 4px; }
 
+  /* ABOUT */
+  .about-hero {
+    background: linear-gradient(135deg,#0a0a2e,#2222aa);
+    color: white; padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem;
+    box-shadow: 0 8px 30px rgba(20,20,180,0.2);
+  }
+  .about-hero h2 { font-family: 'Fredoka One', cursive; font-size: 1.8rem; margin-bottom: 0.7rem; }
+  .about-hero p { color: rgba(255,255,255,0.78); line-height: 1.6; max-width: 700px; }
+  .about-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(250px,1fr)); gap: 16px; }
+  .about-card {
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
+    border: 1.5px solid #cce0f5; border-radius: 16px; padding: 1.2rem;
+    box-shadow: 0 4px 20px rgba(100,150,220,0.08);
+  }
+  .about-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
+  .about-title { font-family: 'Fredoka One', cursive; font-size: 1rem; margin-bottom: 0.6rem; color: #1a2a66; }
+  .about-card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
+
+  /* RESOURCES */
+  .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 14px; }
+  .resource-card {
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
+    border: 1.5px solid #cce0f5; border-radius: 16px; padding: 1.2rem;
+    box-shadow: 0 4px 20px rgba(100,150,220,0.08);
+    text-decoration: none; display: block; transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .resource-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(100,150,220,0.18); }
+  .resource-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+  .resource-title { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #1a2a66; margin-bottom: 0.4rem; }
+  .resource-desc { font-size: 0.85rem; color: #557799; line-height: 1.5; }
+
   /* FOOTER */
-.footer {
-  margin-top: 3rem;
-  background: #0a0a2e;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  color: white;
-  padding: 2.2rem 1.5rem;
-}
-
-.footer-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.footer-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-}
-
-.footer-sub {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 1.5rem;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-}
-
-.footer-link {
-  text-decoration: none;
-  color: #dbe4ff;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 0.65rem 1rem;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  transition: all 0.18s ease;
-}
-
-.footer-link:hover {
-  background: #3344cc;
-  color: white;
-  transform: translateY(-2px);
-}
-
-.footer-bottom {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.45);
-}
-
-/* CAPTAIN BIOS */
-.captain-bio {
-  margin-top: 0.9rem;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #666;
-  text-align: left;
-  background: #f8f9fc;
-  border: 1px solid #e5e7eb;
-  padding: 0.8rem;
-  border-radius: 10px;
-}
-.captain-bio {
-  font-style: italic;
-  border-left: 3px solid #3333cc;
-}
-/* ABOUT TAB */
-.about-hero {
-  background: linear-gradient(135deg,#0a0a2e,#2222aa);
-  color: white;
-  padding: 2rem;
-  border-radius: 16px;
-  margin-bottom: 1.5rem;
-}
-
-.about-hero h2 {
-  font-size: 1.7rem;
-  margin-bottom: 0.7rem;
-}
-
-.about-hero p {
-  color: rgba(255,255,255,0.78);
-  line-height: 1.6;
-  max-width: 700px;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
-  gap: 16px;
-}
-
-.about-card {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  padding: 1.2rem;
-}
-
-.about-icon {
-  font-size: 1.8rem;
-  margin-bottom: 0.7rem;
-}
-
-.about-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.6rem;
-  color: #111;
-}
-
-.about-card p {
-  font-size: 0.9rem;
-  color: #666;
-  line-height: 1.6;
-}
+  .footer {
+    margin-top: 3rem; background: #0a0a2e;
+    border-top: 1px solid rgba(255,255,255,0.08); color: white; padding: 2.2rem 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .footer-content { max-width: 1000px; margin: 0 auto; text-align: center; }
+  .footer-title { font-family: 'Fredoka One', cursive; font-size: 1.1rem; margin-bottom: 0.3rem; }
+  .footer-sub { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; }
+  .footer-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 1.2rem 0; }
+  .footer-link {
+    text-decoration: none; color: #dbe4ff; background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08); padding: 0.65rem 1rem;
+    border-radius: 10px; font-size: 0.85rem; transition: all 0.18s;
+  }
+  .footer-link:hover { background: #3344cc; color: white; transform: translateY(-2px); }
+  .footer-bottom { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 1rem; }
 </style>
 </head>
 <body>
 
+<!-- SKY -->
+<div class="sky" id="sky">
+  <div class="sun"></div>
+</div>
+
+<div class="content">
+
 <div class="hero">
   <div class="stars" id="stars"></div>
   <div style="position:relative;z-index:1;">
-    <div class="hero-badge">Oakton HS Science Olympiad</div>
+    <div class="hero-badge">☁️ Oakton HS Science Olympiad ☁️</div>
     <h1>Oakton <span>Scioly</span></h1>
     <p class="hero-sub">Oakton High School · Vienna, Virginia</p>
     <div class="hero-stats">
@@ -251,14 +245,14 @@
   <button class="tab-btn active" onclick="showTab('teams',this)">👥 Teams</button>
   <button class="tab-btn" onclick="showTab('captains',this)">⭐ Captains</button>
   <button class="tab-btn" onclick="showTab('awards',this)">🏆 Awards</button>
-  <button class = "tab-btn" onclick = "showTab('resources', this)"> 📚 Resources</button>
+  <button class="tab-btn" onclick="showTab('resources',this)">📚 Resources</button>
   <button class="tab-btn" onclick="showTab('about',this)">📖 About</button>
 </div>
 
 <!-- TEAMS -->
 <div id="tab-teams" class="tab-content active">
   <div class="section">
-    <div class="section-title">Team rosters</div>
+    <div class="section-title">☁️ Team Rosters</div>
     <div class="team-grid">
 
       <div class="team-card">
@@ -302,20 +296,13 @@
         <div class="team-body">
           <div class="members-label">Members</div>
           <div class="member-chips">
-            <span class="member-chip">Caitlin Houston</span>
-            <span class="member-chip">Eliza Le</span>
-            <span class="member-chip">Emily Cheung</span>
-            <span class="member-chip">George Sun</span>
-            <span class="member-chip">James Huang</span>
-            <span class="member-chip">Jennifer Xu</span>
-            <span class="member-chip">Kate Li</span>
-            <span class="member-chip">Kevin Geng</span>
-            <span class="member-chip">Marissa Turek</span>
-            <span class="member-chip">Matthew Park</span>
-            <span class="member-chip">Ryden Lee</span>
-            <span class="member-chip">Vivienne Bao</span>
-            <span class="member-chip">Wasima Kasim</span>
-            <span class="member-chip">Yanis Mehenni</span>
+            <span class="member-chip">Caitlin Houston</span><span class="member-chip">Eliza Le</span>
+            <span class="member-chip">Emily Cheung</span><span class="member-chip">George Sun</span>
+            <span class="member-chip">James Huang</span><span class="member-chip">Jennifer Xu</span>
+            <span class="member-chip">Kate Li</span><span class="member-chip">Kevin Geng</span>
+            <span class="member-chip">Marissa Turek</span><span class="member-chip">Matthew Park</span>
+            <span class="member-chip">Ryden Lee</span><span class="member-chip">Vivienne Bao</span>
+            <span class="member-chip">Wasima Kasim</span><span class="member-chip">Yanis Mehenni</span>
           </div>
         </div>
       </div>
@@ -328,18 +315,12 @@
         <div class="team-body">
           <div class="members-label">Members</div>
           <div class="member-chips">
-            <span class="member-chip">Amanda Li</span>
-            <span class="member-chip">Aneesh Chodavarapu</span>
-            <span class="member-chip">Arjun Arunkumar</span>
-            <span class="member-chip">Artem Godlevskii</span>
-            <span class="member-chip">Celine Liu</span>
-            <span class="member-chip">Hannah Lee</span>
-            <span class="member-chip">Hojin Yoo</span>
-            <span class="member-chip">Holden Louie</span>
-            <span class="member-chip">Kaili Shi</span>
-            <span class="member-chip">Kiyan Patel</span>
-            <span class="member-chip">Sarah Ren</span>
-            <span class="member-chip">Shreya Devaraj</span>
+            <span class="member-chip">Amanda Li</span><span class="member-chip">Aneesh Chodavarapu</span>
+            <span class="member-chip">Arjun Arunkumar</span><span class="member-chip">Artem Godlevskii</span>
+            <span class="member-chip">Celine Liu</span><span class="member-chip">Hannah Lee</span>
+            <span class="member-chip">Hojin Yoo</span><span class="member-chip">Holden Louie</span>
+            <span class="member-chip">Kaili Shi</span><span class="member-chip">Kiyan Patel</span>
+            <span class="member-chip">Sarah Ren</span><span class="member-chip">Shreya Devaraj</span>
             <span class="member-chip">Siri Devaraj</span>
           </div>
         </div>
@@ -352,50 +333,51 @@
 <!-- CAPTAINS -->
 <div id="tab-captains" class="tab-content">
   <div class="section">
-    <div class="section-title">Captains</div>
+    <div class="section-title">⭐ Captains</div>
     <div class="captains-grid">
-      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div><div class="cname">Albert Zhu</div>
+
+      <div class="captain-card">
+        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">AZ</div>
+        <div class="cname">Albert Zhu</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">
-          “Hi I'm Albert, nothing much to say I'm just the goat,
-          I have so much aura I'm GREEN GREEN.”
-        </p>
+        <p class="captain-bio">"Hi I'm Albert, nothing much to say I'm just the goat, I have so much aura I'm GREEN GREEN."</p>
       </div>
-      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div><div class="cname">Brandon Lin</div>
+
+      <div class="captain-card">
+        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">BL</div>
+        <div class="cname">Brandon Lin</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">
-          “Hi I'm brandon, I love codebusters favorite events
-          I also LOVE pokemon, I'm going to bust your code...”
-        </p>
+        <p class="captain-bio">"Hi I'm brandon, I love codebusters favorite events I also LOVE pokemon, I'm going to bust your code..."</p>
       </div>
-      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div><div class="cname">Chunmin Huang</div>
+
+      <div class="captain-card">
+        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">CH</div>
+        <div class="cname">Chunmin Huang</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">
-          “Hi I'm Chunmin I'm chunjie's twin, 
-          bet you didn't know that. (She better not copy me)”
-        </p>
+        <p class="captain-bio">"Hi I'm Chunmin I'm chunjie's twin, bet you didn't know that. (She better not copy me)"</p>
       </div>
-      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div><div class="cname">Chunjie Huang</div>
+
+      <div class="captain-card">
+        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">CH</div>
+        <div class="cname">Chunjie Huang</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">
-          “Hi I'm Chunjie, and I am Chunmins Twin, bet you
-          didn't know that.”
-        </p>
+        <p class="captain-bio">"Hi I'm Chunjie, and I am Chunmins Twin, bet you didn't know that."</p>
       </div>
-      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div><div class="cname">Linus Koepcke</div>
+
+      <div class="captain-card">
+        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">LK</div>
+        <div class="cname">Linus Koepcke</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">
-          “Hi I'm Linus, and I give out high fives for free IQ points,
-          I love Scioly and im linear!”
-        </p>
+        <p class="captain-bio">"Hi I'm Linus, and I give out high fives for free IQ points, I love Scioly and im linear!"</p>
       </div>
-      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div><div class="cname">Sara Shaddarsanam</div>
+
+      <div class="captain-card">
+        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div>
+        <div class="cname">Sara Shaddarsanam</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">
-          “Hellooo! I’m Sara. I’ve been in SciOly since freshman year.
-          I have an addiction to cake and Tinkaton.”
-        </p>
+        <p class="captain-bio">"Hellooo! I'm Sara. I've been in SciOly since freshman year. I have an addiction to cake and Tinkaton."</p>
       </div>
+
     </div>
   </div>
 </div>
@@ -404,12 +386,10 @@
 <div id="tab-awards" class="tab-content">
   <div class="section">
     <div class="section-title">🏆 Awards & Results</div>
-
     <div class="filter-row" id="type-filter-row">
       <button class="filter-btn type-btn active" id="btn-invite" onclick="showAwardType('invite', this)">🏆 Invitational Results</button>
       <button class="filter-btn type-btn" id="btn-official" onclick="showAwardType('official', this)">🥇 Regionals &amp; States</button>
     </div>
-
     <div class="filter-row" id="team-filter-row">
       <button class="filter-btn active" onclick="filterTeam('all', this)">All Teams</button>
       <button class="filter-btn" onclick="filterTeam('solar', this)">☀️ Solar</button>
@@ -417,9 +397,7 @@
       <button class="filter-btn" onclick="filterTeam('eclipse', this)">🌑 Eclipse</button>
     </div>
 
-    <!-- INVITATIONALS -->
     <div id="invite-results" class="awards-group">
-
       <div class="tourney-block" data-teams="solar lunar">
         <div class="tourney-header">
           <div><div class="tourney-name">Flint Hill Invitational</div><div class="tourney-date">December 13, 2025</div></div>
@@ -548,17 +526,13 @@
           <div class="event-card" data-team="lunar"><span class="place-badge p3">3rd</span><span class="event-name">Dynamic Planet 🌙</span></div>
         </div>
       </div>
-
     </div>
 
-    <!-- REGIONALS & STATES -->
     <div id="official-results" class="awards-group" style="display:none;">
-
       <div class="states-banner">
         <div class="big">🥈 2nd Place — Virginia States 2026</div>
         <div class="sub">Solar's best finish ever · Oakton High School</div>
       </div>
-
       <div class="tourney-block" data-teams="solar lunar eclipse">
         <div class="tourney-header">
           <div><div class="tourney-name">Virginia Regional Tournament @ UMW</div><div class="tourney-date">February 28, 2026</div></div>
@@ -581,17 +555,12 @@
           <div class="event-card" data-team="solar"><span class="place-badge ptop">8th</span><span class="event-name">Materials Science ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge ptop">9th</span><span class="event-name">Exp. Design ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge ptop">10th</span><span class="event-name">Robot Tour ☀️</span></div>
-
-          <div class="event-card" data-team="lunar"><span class="place-badge ptop">9th</span><span class="event-name">Designer Genes 🌙</span></div>
           <div class="event-card" data-team="lunar"><span class="place-badge p3">3rd</span><span class="event-name">Entomology 🌙</span></div>
-
-          <div class="event-card" data-team="eclipse"><span class="place-badge ptop">8th</span><span class="event-name">Anatomy and Physiology 🌑</span></div>
+          <div class="event-card" data-team="lunar"><span class="place-badge ptop">9th</span><span class="event-name">Designer Genes 🌙</span></div>
           <div class="event-card" data-team="eclipse"><span class="place-badge ptop">7th</span><span class="event-name">Eng. CAD 🌑</span></div>
-
-
+          <div class="event-card" data-team="eclipse"><span class="place-badge ptop">8th</span><span class="event-name">Anatomy &amp; Phys 🌑</span></div>
         </div>
       </div>
-
       <div class="tourney-block" data-teams="solar">
         <div class="tourney-header">
           <div><div class="tourney-name">Virginia State Tournament @ UVA</div><div class="tourney-date">March 21st, 2026</div></div>
@@ -600,209 +569,263 @@
         <div class="events-grid">
           <div class="event-card" data-team="solar"><span class="place-badge p2">2nd</span><span class="event-name">Overall Finish ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge p1">1st</span><span class="event-name">Rocks &amp; Minerals ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">9th</span><span class="event-name">Anatomy and Physiology ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">5th</span><span class="event-name">Astronomy ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">9th</span><span class="event-name">Boomilever ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">8th</span><span class="event-name">Bungee Drop ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge p2">2nd</span><span class="event-name">Chemistry Lab ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">8th</span><span class="event-name">Circuit Lab ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge p1">1st</span><span class="event-name">Codebusters ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">8th</span><span class="event-name">Designer Genes ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge p2">2nd</span><span class="event-name">Dynamic Planet ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">9th</span><span class="event-name">Electric Vehicle ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">4th</span><span class="event-name">Eng. CAD ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge p1">1st</span><span class="event-name">Entomology ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge p3">3rd</span><span class="event-name">Exp. Design ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">6th</span><span class="event-name">Helicopter ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge p2">2nd</span><span class="event-name">Machines ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge p3">3rd</span><span class="event-name">Materials Science ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge p2">2nd</span><span class="event-name">Remote Sensing ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge p1">1st</span><span class="event-name">Water Quality ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge p2">2nd</span><span class="event-name">Chemistry Lab ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge p2">2nd</span><span class="event-name">Dynamic Planet ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge p2">2nd</span><span class="event-name">Machines ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge p2">2nd</span><span class="event-name">Remote Sensing ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge p3">3rd</span><span class="event-name">Exp. Design ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge p3">3rd</span><span class="event-name">Materials Science ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge ptop">4th</span><span class="event-name">Eng. CAD ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge ptop">5th</span><span class="event-name">Astronomy ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge ptop">6th</span><span class="event-name">Helicopter ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge ptop">6th</span><span class="event-name">Protein Modeling ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge ptop">8th</span><span class="event-name">Bungee Drop ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge ptop">8th</span><span class="event-name">Circuit Lab ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge ptop">8th</span><span class="event-name">Designer Genes ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge ptop">9th</span><span class="event-name">Anatomy &amp; Phys ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge ptop">9th</span><span class="event-name">Boomilever ☀️</span></div>
+          <div class="event-card" data-team="solar"><span class="place-badge ptop">9th</span><span class="event-name">Electric Vehicle ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge ptop">10th</span><span class="event-name">Cyber Security ☀️</span></div>
-
-
         </div>
       </div>
-
-      
-
     </div>
   </div>
 </div>
 
-  <!-- ABOUT -->
+<!-- RESOURCES -->
+<div id="tab-resources" class="tab-content">
+  <div class="section">
+    <div class="section-title">📚 Resources</div>
+    <div class="resources-grid">
+      <a href="https://www.soinc.org/" target="_blank" class="resource-card">
+        <div class="resource-icon">🧪</div>
+        <div class="resource-title">Science Olympiad Official</div>
+        <div class="resource-desc">Official rules, event details, and national competition info from Science Olympiad Inc.</div>
+      </a>
+      <a href="https://www.virginiaso.org/" target="_blank" class="resource-card">
+        <div class="resource-icon">🐦</div>
+        <div class="resource-title">Virginia Science Olympiad</div>
+        <div class="resource-desc">VASO — Virginia's official Scioly organization, regional and state tournament info.</div>
+      </a>
+      <a href="https://scioly.org/wiki/" target="_blank" class="resource-card">
+        <div class="resource-icon">📖</div>
+        <div class="resource-title">Scioly.org Wiki</div>
+        <div class="resource-desc">Community-built study guides, event tips, and resources for every Scioly event.</div>
+      </a>
+      <a href="https://scioly.org/tests/" target="_blank" class="resource-card">
+        <div class="resource-icon">📝</div>
+        <div class="resource-title">Past Tests</div>
+        <div class="resource-desc">Hundreds of past invitational and tournament tests to practice with from scioly.org.</div>
+      </a>
+      <a href="https://www.duosmium.org/" target="_blank" class="resource-card">
+        <div class="resource-icon">📊</div>
+        <div class="resource-title">Duosmium Results</div>
+        <div class="resource-desc">Detailed invitational and tournament results and standings from across the country.</div>
+      </a>
+      <a href="https://www.instagram.com/oaktonscioly" target="_blank" class="resource-card">
+        <div class="resource-icon">📸</div>
+        <div class="resource-title">Our Instagram</div>
+        <div class="resource-desc">Follow @oaktonscioly for updates, competition photos, and team news!</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
 <div id="tab-about" class="tab-content">
   <div class="section">
-
     <div class="about-hero">
       <h2>About Oakton Scioly</h2>
-      <p>
-        Oakton Science Olympiad is a student-led STEM competition team
-        focused on science, engineering, inquiry, and teamwork.
-      </p>
+      <p>Oakton Science Olympiad is a student-led STEM competition team focused on science, engineering, inquiry, and teamwork.</p>
     </div>
-
     <div class="about-grid">
-
       <div class="about-card">
         <div class="about-icon">🧪</div>
         <div class="about-title">Who We Are</div>
-        <p>
-          Oakton Scioly competes in invitationals, regional tournaments,
-          and the Virginia State Tournament every season.
-          Our members work across biology, chemistry, physics,
-          engineering, earth science, and coding events. These events require constant studying,
-          immense passion and focus. 
-        </p>
+        <p>Oakton Scioly competes in invitationals, regional tournaments, and the Virginia State Tournament every season. Our members work across biology, chemistry, physics, engineering, earth science, and coding events. These events require constant studying, immense passion and focus.</p>
       </div>
-
       <div class="about-card">
         <div class="about-icon">🏆</div>
         <div class="about-title">Achievements</div>
-        <p>
-          During the 2025–2026 season, Solar placed 2nd at Virginia States,
-          the best finish in Oakton Scioly history. Our team has consistently
-          been placing at top tier invitationals such as Princeton and VTech.
-        </p>
+        <p>During the 2025–2026 season, Solar placed 2nd at Virginia States, the best finish in Oakton Scioly history. Our team has consistently been placing at top tier invitationals such as Princeton and VTech.</p>
       </div>
-
       <div class="about-card">
         <div class="about-icon">⚙️</div>
         <div class="about-title">Build Events</div>
-        <p>
-          Members design and test engineering devices including
-          helicopters, electric vehicles, hovercrafts,
-          boomilevers, and robot systems.
-        </p>
+        <p>Members design and test engineering devices including helicopters, electric vehicles, hovercrafts, boomilevers, and robot systems.</p>
       </div>
-
-      <div class = "about-card">
-        <div class = "about-icon"> 📖 </div>
-        <div class = "about-title">Study Events</div>
-        <p>
-          Members study events from Earth Sciences (Entomology,
-          Dynamic Planet, Water Quality) to the human body (Anatomy),
-          outside of this world (Astronomy). In these events members will
-          build binders and cheat sheets to help them during the test at the competition.
-        </p>
+      <div class="about-card">
+        <div class="about-icon">📖</div>
+        <div class="about-title">Study Events</div>
+        <p>Members study events from Earth Sciences (Entomology, Dynamic Planet, Water Quality) to the human body (Anatomy), outside of this world (Astronomy). In these events members will build binders and cheat sheets to help them during the test at the competition.</p>
       </div>
-
       <div class="about-card">
         <div class="about-icon">🌌</div>
         <div class="about-title">Team Culture</div>
-        <p>
-          Beyond competing, Oakton Scioly is a community built on
-          collaboration, late-night studying (on discord), inside jokes,
-          snacks, and teamwork. We love one another very much, its a second
-          family to all of us.
-        </p>
+        <p>Beyond competing, Oakton Scioly is a community built on collaboration, late-night studying (on discord), inside jokes, snacks, and teamwork. We love one another very much, its a second family to all of us.</p>
       </div>
-
     </div>
-
   </div>
 </div>
 
-<script>
-  let currentTeam = 'all';
+</div><!-- end .content -->
 
-  function showTab(name, btn) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-    document.getElementById('tab-' + name).classList.add('active');
-    btn.classList.add('active');
-  }
-
-  function showAwardType(type, btn) {
-    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const inviteEl = document.getElementById('invite-results');
-    const officialEl = document.getElementById('official-results');
-    if (type === 'invite') {
-      inviteEl.style.display = '';
-      officialEl.style.display = 'none';
-    } else {
-      inviteEl.style.display = 'none';
-      officialEl.style.display = '';
-    }
-    applyTeamFilter(currentTeam);
-  }
-
-  function filterTeam(team, btn) {
-    currentTeam = team;
-    document.querySelectorAll('#team-filter-row .filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    applyTeamFilter(team);
-  }
-
-  function applyTeamFilter(team) {
-    const inviteVisible = document.getElementById('invite-results').style.display !== 'none';
-    const group = inviteVisible
-      ? document.getElementById('invite-results')
-      : document.getElementById('official-results');
-    group.querySelectorAll('.tourney-block').forEach(block => {
-      if (team === 'all') {
-        block.style.display = '';
-        block.querySelectorAll('.event-card').forEach(c => c.style.display = '');
-      } else {
-        const hasTeam = block.dataset.teams && block.dataset.teams.includes(team);
-        block.style.display = hasTeam ? '' : 'none';
-        block.querySelectorAll('.event-card').forEach(c => {
-          c.style.display = (c.dataset.team === team) ? '' : 'none';
-        });
-      }
-    });
-  }
-
-  const starsEl = document.getElementById('stars');
-  for (let i = 0; i < 70; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    const size = Math.random() * 2.5 + 0.5;
-    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
-    starsEl.appendChild(s);
-  }
-</script>
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-content">
-
-    <div class="footer-brand">
-      <div class="footer-title">Oakton HS Science Olympiad</div>
-      <div class="footer-sub">
-        Oakton High School · Vienna, Virginia
-      </div>
-      <div class="footer-sub">
-      2900 Sutton Rd, Vienna VA 22182
-      </div>
-    </div>
-
+    <div class="footer-title">Oakton HS Science Olympiad</div>
+    <div class="footer-sub">Oakton High School · Vienna, Virginia</div>
+    <div class="footer-sub">2900 Sutton Rd, Vienna VA 22182</div>
     <div class="footer-links">
-      <a href="https://www.instagram.com/oaktonscioly?igsh=MWk1dGV4bDVhaWdocg%3D%3D&utm_source=qr" target="_blank" class="footer-link">
-        📸 Instagram
-      </a>
-
-
-      <a href="https://www.soinc.org/" target="_blank" class="footer-link">
-        🧪 Science Olympiad
-      </a>
-
-      <a href="ohssciol@gmail.com" class="footer-link">
-        ✉️ Gmail
-      </a>
-
-      <a href="https://www.virginiaso.org/" target = "_blank" class = "footer-link">
-        🐦 VASO (Virginia Science Olympiad)
-      </a>
+      <a href="https://www.instagram.com/oaktonscioly?igsh=MWk1dGV4bDVhaWdocg%3D%3D&utm_source=qr" target="_blank" class="footer-link">📸 Instagram</a>
+      <a href="https://www.soinc.org/" target="_blank" class="footer-link">🧪 Science Olympiad</a>
+      <a href="mailto:ohssciol@gmail.com" class="footer-link">✉️ Gmail</a>
+      <a href="https://www.virginiaso.org/" target="_blank" class="footer-link">🐦 VASO</a>
     </div>
-
-    <div class="footer-bottom">
-      © 2026 Oakton Scioly · Built for the 2025–2026 season
-    </div>
-
+    <div class="footer-bottom">© 2026 Oakton Scioly · Built for the 2025–2026 season</div>
   </div>
 </footer>
 
+<script>
+// ── TABS & FILTERS ──
+let currentTeam = 'all';
+function showTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+function showAwardType(type, btn) {
+  document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const inv = document.getElementById('invite-results');
+  const off = document.getElementById('official-results');
+  if (type === 'invite') { inv.style.display = ''; off.style.display = 'none'; }
+  else { inv.style.display = 'none'; off.style.display = ''; }
+  applyTeamFilter(currentTeam);
+}
+function filterTeam(team, btn) {
+  currentTeam = team;
+  document.querySelectorAll('#team-filter-row .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyTeamFilter(team);
+}
+function applyTeamFilter(team) {
+  const invVis = document.getElementById('invite-results').style.display !== 'none';
+  const group = invVis ? document.getElementById('invite-results') : document.getElementById('official-results');
+  group.querySelectorAll('.tourney-block').forEach(block => {
+    if (team === 'all') {
+      block.style.display = '';
+      block.querySelectorAll('.event-card').forEach(c => c.style.display = '');
+    } else {
+      block.style.display = block.dataset.teams && block.dataset.teams.includes(team) ? '' : 'none';
+      block.querySelectorAll('.event-card').forEach(c => {
+        c.style.display = c.dataset.team === team ? '' : 'none';
+      });
+    }
+  });
+}
+
+// ── HERO STARS ──
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 70; i++) {
+  const s = document.createElement('div'); s.className = 'star';
+  const sz = Math.random() * 2.5 + 0.5;
+  s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
+  starsEl.appendChild(s);
+}
+
+// ── SCIOLY EVENT CLOUDS ──
+const events = [
+  { label: 'Astronomy',        emoji: '🔭' },
+  { label: 'Codebusters',      emoji: '🔐' },
+  { label: 'Dynamic Planet',   emoji: '🌍' },
+  { label: 'Chemistry Lab',    emoji: '🧪' },
+  { label: 'Entomology',       emoji: '🐛' },
+  { label: 'Forensics',        emoji: '🔍' },
+  { label: 'Machines',         emoji: '⚙️' },
+  { label: 'Remote Sensing',   emoji: '📡' },
+  { label: 'Rocks & Minerals', emoji: '🪨' },
+  { label: 'Exp. Design',      emoji: '🧬' },
+  { label: 'Helicopter',       emoji: '🚁' },
+  { label: 'Hovercraft',       emoji: '🛸' },
+  { label: 'Boomilever',       emoji: '🏗️' },
+  { label: 'Bungee Drop',      emoji: '🪢' },
+  { label: 'Circuit Lab',      emoji: '⚡' },
+  { label: 'Designer Genes',   emoji: '🧫' },
+  { label: 'Disease Detectives', emoji: '🦠' },
+  { label: 'Eng. CAD',         emoji: '📐' },
+  { label: 'Materials Science', emoji: '🔬' },
+  { label: 'Water Quality',    emoji: '💧' },
+  { label: 'Fermi Questions',  emoji: '🔢' },
+  { label: 'Robot Tour',       emoji: '🤖' },
+  { label: 'Anatomy & Phys',   emoji: '🫀' },
+  { label: 'Protein Modeling', emoji: '🧩' },
+  { label: 'Cyber Security',   emoji: '🛡️' },
+  { label: 'Electric Vehicle', emoji: '🚗' },
+];
+
+const cloudShapes = [
+  { w: 110, h: 38, bumps: [{x:20,y:-22,r:26},{x:50,y:-30,r:32},{x:80,y:-20,r:24}] },
+  { w: 90,  h: 32, bumps: [{x:25,y:-18,r:22},{x:55,y:-26,r:28},{x:78,y:-16,r:20}] },
+  { w: 130, h: 42, bumps: [{x:18,y:-24,r:28},{x:45,y:-34,r:36},{x:72,y:-28,r:30},{x:90,y:-18,r:22}] },
+];
+
+const sky = document.getElementById('sky');
+
+function spawnCloud(eventData, delayMs) {
+  const shape = cloudShapes[Math.floor(Math.random() * cloudShapes.length)];
+  const scale = 0.8 + Math.random() * 0.7;
+  const top = 8 + Math.random() * 82;
+  const duration = 28 + Math.random() * 40;
+
+  const cloud = document.createElement('div');
+  cloud.className = 'cloud';
+  cloud.style.cssText = `top:${top}%;animation:floatCloud ${duration}s linear ${delayMs}ms infinite;filter:drop-shadow(0 4px 8px rgba(100,140,200,0.18));`;
+
+  const body = document.createElement('div');
+  body.className = 'cloud-body';
+  body.style.cssText = `position:relative;width:${shape.w*scale}px;height:${shape.h*scale}px;`;
+
+  const base = document.createElement('div');
+  base.style.cssText = `position:absolute;bottom:0;left:0;width:${shape.w*scale}px;height:${shape.h*scale}px;border-radius:50px;background:white;`;
+  body.appendChild(base);
+
+  shape.bumps.forEach(b => {
+    const bump = document.createElement('div');
+    const r = b.r * scale;
+    bump.style.cssText = `position:absolute;width:${r*2}px;height:${r*2}px;border-radius:50%;background:white;left:${(b.x/100)*shape.w*scale-r}px;bottom:${shape.h*scale-8*scale}px;`;
+    body.appendChild(bump);
+  });
+
+  const inner = document.createElement('div');
+  inner.style.cssText = `position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;`;
+
+  const em = document.createElement('div');
+  em.style.cssText = `font-size:${Math.round(14*scale)}px;line-height:1;`;
+  em.textContent = eventData.emoji;
+
+  const lbl = document.createElement('div');
+  lbl.style.cssText = `font-family:'Fredoka One',cursive;font-size:${Math.round(9*scale)}px;color:#5577aa;white-space:nowrap;`;
+  lbl.textContent = eventData.label;
+
+  inner.appendChild(em);
+  inner.appendChild(lbl);
+  body.appendChild(inner);
+  cloud.appendChild(body);
+  sky.appendChild(cloud);
+}
+
+let delay = 0;
+for (let i = 0; i < 42; i++) {
+  spawnCloud(events[i % events.length], delay);
+  delay += 1600 + Math.random() * 1800;
+}
+</script>
 </body>
 </html>
+ENDOFFILE
+echo "Done"
