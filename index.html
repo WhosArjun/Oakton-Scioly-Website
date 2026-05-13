@@ -1,4 +1,3 @@
-cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Nunito', system-ui, sans-serif; background: #d6eaff; overflow-x: hidden; }
-
+ 
   /* ── CLOUD SKY BACKGROUND ── */
   .sky {
     position: fixed; inset: 0; z-index: 0;
@@ -41,10 +40,10 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
   }
   .cloud-emoji { font-size: 16px; line-height: 1; margin-bottom: 1px; }
   @keyframes floatCloud { from { transform: translateX(110vw); } to { transform: translateX(-320px); } }
-
+ 
   /* ── CONTENT ── */
   .content { position: relative; z-index: 1; }
-
+ 
   .hero {
     background: linear-gradient(180deg, #0a0a2e 0%, #1a1a5e 100%);
     padding: 3.5rem 2rem 4rem;
@@ -66,7 +65,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
   .hero-stats { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
   .hero-stat .num { font-family: 'Fredoka One', cursive; font-size: 1.9rem; color: #fff; }
   .hero-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; }
-
+ 
   .nav-tabs {
     display: flex; justify-content: center;
     background: rgba(255,255,255,0.88); backdrop-filter: blur(10px);
@@ -81,10 +80,10 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
   }
   .tab-btn.active { color: #2244cc; border-bottom-color: #2244cc; }
   .tab-btn:hover:not(.active) { color: #2244cc; }
-
+ 
   .section { padding: 1.75rem 1.25rem; max-width: 880px; margin: 0 auto; }
   .section-title { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #2244cc; margin-bottom: 1.1rem; display: flex; align-items: center; gap: 8px; }
-
+ 
   /* TEAMS */
   .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 16px; }
   .team-card {
@@ -105,7 +104,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
   .member-chips { display: flex; flex-wrap: wrap; gap: 4px; }
   .member-chip { font-size: 11px; color: #446699; background: #e8f2ff; border: 1px solid #cce0f5; padding: 3px 8px; border-radius: 11px; font-weight: 600; }
   .member-chip.cap { font-weight: 700; }
-
+ 
   /* CAPTAINS */
   .captains-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 12px; }
   .captain-card {
@@ -122,7 +121,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
     padding: 0.8rem; border-radius: 10px; font-style: italic;
     border-left: 3px solid #3344cc;
   }
-
+ 
   /* AWARDS */
   .filter-row { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 0.85rem; }
   .filter-btn {
@@ -132,7 +131,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
   }
   .filter-btn.active { background: #2244cc; color: #fff; border-color: #2244cc; }
   .filter-btn.type-btn.active { background: #0a0a2e; color: #fff; border-color: #0a0a2e; }
-
+ 
   .awards-group { display: flex; flex-direction: column; gap: 2rem; }
   .tourney-block {
     background: rgba(255,255,255,0.78); backdrop-filter: blur(8px);
@@ -151,14 +150,14 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
   .p3 { background: #ffe8d6; color: #7a3500; }
   .ptop { background: #e0eaff; color: #2233aa; }
   .event-name { font-size: 11.5px; color: #446699; line-height: 1.3; font-weight: 600; }
-
+ 
   .solar-stripe { background: linear-gradient(90deg,rgba(255,248,220,0.9),rgba(255,243,200,0.9)); border-left: 3px solid #e8a800; }
   .lunar-stripe { background: linear-gradient(90deg,rgba(229,234,255,0.9),rgba(216,224,255,0.9)); border-left: 3px solid #3344cc; }
   .eclipse-stripe { background: linear-gradient(90deg,rgba(240,229,255,0.9),rgba(232,216,255,0.9)); border-left: 3px solid #7722cc; }
-
+ 
   .tab-content { display: none; }
   .tab-content.active { display: block; }
-
+ 
   .states-banner {
     background: linear-gradient(135deg, #0a0a2e, #2222aa);
     border-radius: 16px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; color: white;
@@ -166,7 +165,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
   }
   .states-banner .big { font-family: 'Fredoka One', cursive; font-size: 1.8rem; }
   .states-banner .sub { font-size: 0.9rem; opacity: 0.75; margin-top: 4px; }
-
+ 
   /* ABOUT */
   .about-hero {
     background: linear-gradient(135deg,#0a0a2e,#2222aa);
@@ -184,7 +183,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
   .about-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
   .about-title { font-family: 'Fredoka One', cursive; font-size: 1rem; margin-bottom: 0.6rem; color: #1a2a66; }
   .about-card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
-
+ 
   /* RESOURCES */
   .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 14px; }
   .resource-card {
@@ -197,7 +196,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
   .resource-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
   .resource-title { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #1a2a66; margin-bottom: 0.4rem; }
   .resource-desc { font-size: 0.85rem; color: #557799; line-height: 1.5; }
-
+ 
   /* FOOTER */
   .footer {
     margin-top: 3rem; background: #0a0a2e;
@@ -218,14 +217,14 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
 </style>
 </head>
 <body>
-
+ 
 <!-- SKY -->
 <div class="sky" id="sky">
   <div class="sun"></div>
 </div>
-
+ 
 <div class="content">
-
+ 
 <div class="hero">
   <div class="stars" id="stars"></div>
   <div style="position:relative;z-index:1;">
@@ -240,23 +239,21 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
     </div>
   </div>
 </div>
-
+ 
 <div class="nav-tabs">
   <button class="tab-btn active" onclick="showTab('teams',this)">👥 Teams</button>
   <button class="tab-btn" onclick="showTab('captains',this)">⭐ Captains</button>
   <button class="tab-btn" onclick="showTab('awards',this)">🏆 Awards</button>
   <button class="tab-btn" onclick="showTab('resources',this)">📚 Resources</button>
   <button class="tab-btn" onclick="showTab('about',this)">📖 About</button>
-  <button class = "tab-btn" onclick="showTab('blog', this)">🌐 Blog</button>"
-  <button class = "tab-btn" onclick="showTab('tryout information', this)">🎯 Tryouts</button>
 </div>
-
+ 
 <!-- TEAMS -->
 <div id="tab-teams" class="tab-content active">
   <div class="section">
     <div class="section-title">☁️ Team Rosters</div>
     <div class="team-grid">
-
+ 
       <div class="team-card">
         <div class="team-header-bar solar-stripe">
           <span class="team-emoji">☀️</span>
@@ -289,7 +286,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
           </div>
         </div>
       </div>
-
+ 
       <div class="team-card">
         <div class="team-header-bar lunar-stripe">
           <span class="team-emoji">🌙</span>
@@ -308,7 +305,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
           </div>
         </div>
       </div>
-
+ 
       <div class="team-card">
         <div class="team-header-bar eclipse-stripe">
           <span class="team-emoji">🌑</span>
@@ -327,63 +324,63 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
           </div>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </div>
-
+ 
 <!-- CAPTAINS -->
 <div id="tab-captains" class="tab-content">
   <div class="section">
     <div class="section-title">⭐ Captains</div>
     <div class="captains-grid">
-
+ 
       <div class="captain-card">
         <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">AZ</div>
         <div class="cname">Albert Zhu</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
         <p class="captain-bio">"Hi I'm Albert, nothing much to say I'm just the goat, I have so much aura I'm GREEN GREEN."</p>
       </div>
-
+ 
       <div class="captain-card">
         <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">BL</div>
         <div class="cname">Brandon Lin</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
         <p class="captain-bio">"Hi I'm brandon, I love codebusters favorite events I also LOVE pokemon, I'm going to bust your code..."</p>
       </div>
-
+ 
       <div class="captain-card">
         <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">CH</div>
         <div class="cname">Chunmin Huang</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
         <p class="captain-bio">"Hi I'm Chunmin I'm chunjie's twin, bet you didn't know that. (She better not copy me)"</p>
       </div>
-
+ 
       <div class="captain-card">
         <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">CH</div>
         <div class="cname">Chunjie Huang</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
         <p class="captain-bio">"Hi I'm Chunjie, and I am Chunmins Twin, bet you didn't know that."</p>
       </div>
-
+ 
       <div class="captain-card">
         <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">LK</div>
         <div class="cname">Linus Koepcke</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
         <p class="captain-bio">"Hi I'm Linus, and I give out high fives for free IQ points, I love Scioly and im linear!"</p>
       </div>
-
+ 
       <div class="captain-card">
         <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div>
         <div class="cname">Sara Shaddarsanam</div>
         <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
         <p class="captain-bio">"Hellooo! I'm Sara. I've been in SciOly since freshman year. I have an addiction to cake and Tinkaton."</p>
       </div>
-
+ 
     </div>
   </div>
 </div>
-
+ 
 <!-- AWARDS -->
 <div id="tab-awards" class="tab-content">
   <div class="section">
@@ -398,7 +395,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
       <button class="filter-btn" onclick="filterTeam('lunar', this)">🌙 Lunar</button>
       <button class="filter-btn" onclick="filterTeam('eclipse', this)">🌑 Eclipse</button>
     </div>
-
+ 
     <div id="invite-results" class="awards-group">
       <div class="tourney-block" data-teams="solar lunar">
         <div class="tourney-header">
@@ -433,12 +430,11 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
           <div class="event-card" data-team="lunar"><span class="place-badge ptop">6th</span><span class="event-name">Remote Sensing 🌙</span></div>
         </div>
       </div>
-
+ 
       <div class="tourney-block" data-teams="solar lunar eclipse">
         <div class="tourney-header">
           <div><div class="tourney-name">Fairfax Invitational</div><div class="tourney-date">January 10, 2026</div></div>
           <div style="margin-left:auto;"><span class="overall-badge" style="background:#fff3cc;color:#7a4a00;">☀️ Solar — 2nd / 70 teams</span></div>
-          <span class="overall-badge" style="background:#dde4ff;color:#1a2a99;">🌙 Lunar — 16th / 70 teams</span>
         </div>
         <div class="events-grid">
           <div class="event-card" data-team="solar"><span class="place-badge p1">1st</span><span class="event-name">Astronomy ☀️</span></div>
@@ -459,12 +455,10 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
           <div class="event-card" data-team="lunar"><span class="place-badge ptop">5th</span><span class="event-name">Materials Science 🌙</span></div>
         </div>
       </div>
-
+ 
       <div class="tourney-block" data-teams="solar lunar eclipse">
         <div class="tourney-header">
           <div><div class="tourney-name">Virginia Tech Invitational</div><div class="tourney-date">January 31, 2026</div></div>
-          <div style="margin-left:auto;"><span class="overall-badge" style="background:#fff3cc;color:#7a4a00;">☀️ Solar — 4th / 32 teams</span></div>
-          <span class="overall-badge" style="background:#dde4ff;color:#1a2a99;">🌙 Lunar — 12th / 32</span>
         </div>
         <div class="events-grid">
           <div class="event-card" data-team="solar"><span class="place-badge p1">1st</span><span class="event-name">Codebusters ☀️</span></div>
@@ -503,7 +497,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
           <div class="event-card" data-team="eclipse"><span class="place-badge ptop">10th</span><span class="event-name">Designer Genes 🌑</span></div>
         </div>
       </div>
-
+ 
       <div class="tourney-block" data-teams="solar">
         <div class="tourney-header">
           <div><div class="tourney-name">Princeton Invitational</div><div class="tourney-date">February 7, 2026</div></div>
@@ -519,7 +513,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
           <div class="event-card" data-team="solar"><span class="place-badge ptop">9th</span><span class="event-name">Hovercraft ☀️</span></div>
         </div>
       </div>
-
+ 
       <div class="tourney-block" data-teams="solar lunar eclipse">
         <div class="tourney-header">
           <div><div class="tourney-name">Boyceville Satellite Invitational</div><div class="tourney-date">December 1, 2025</div></div>
@@ -532,7 +526,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
         </div>
       </div>
     </div>
-
+ 
     <div id="official-results" class="awards-group" style="display:none;">
       <div class="states-banner">
         <div class="big">🥈 2nd Place — Virginia States 2026</div>
@@ -542,7 +536,6 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
         <div class="tourney-header">
           <div><div class="tourney-name">Virginia Regional Tournament @ UMW</div><div class="tourney-date">February 28, 2026</div></div>
           <div style="margin-left:auto;"><span class="overall-badge" style="background:#e8e8e8;color:#333;">☀️ Solar — 6th overall</span></div>
-          <span class="overall-badge" style="background:#dde4ff;color:#1a2a99;">🌙 Lunar — 21st Overall</span>
         </div>
         <div class="events-grid">
           <div class="event-card" data-team="solar"><span class="place-badge p1">1st</span><span class="event-name">Codebusters ☀️</span></div>
@@ -600,7 +593,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
     </div>
   </div>
 </div>
-
+ 
 <!-- RESOURCES -->
 <div id="tab-resources" class="tab-content">
   <div class="section">
@@ -639,7 +632,7 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
     </div>
   </div>
 </div>
-
+ 
 <!-- ABOUT -->
 <div id="tab-about" class="tab-content">
   <div class="section">
@@ -676,9 +669,9 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
     </div>
   </div>
 </div>
-
+ 
 </div><!-- end .content -->
-
+ 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-content">
@@ -690,11 +683,12 @@ cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_final.html
       <a href="https://www.soinc.org/" target="_blank" class="footer-link">🧪 Science Olympiad</a>
       <a href="mailto:ohssciol@gmail.com" class="footer-link">✉️ Gmail</a>
       <a href="https://www.virginiaso.org/" target="_blank" class="footer-link">🐦 VASO</a>
+      <a href = "https://github.com/WhosArjun/Oakton-Scioly-Website" target = "_blank" class = "footer-link"> Oakton Scioly Website Github</a>
     </div>
     <div class="footer-bottom">© 2026 Oakton Scioly · Built for the 2025–2026 season</div>
   </div>
 </footer>
-
+ 
 <script>
 // ── TABS & FILTERS ──
 let currentTeam = 'all';
@@ -734,7 +728,7 @@ function applyTeamFilter(team) {
     }
   });
 }
-
+ 
 // ── HERO STARS ──
 const starsEl = document.getElementById('stars');
 for (let i = 0; i < 70; i++) {
@@ -743,7 +737,7 @@ for (let i = 0; i < 70; i++) {
   s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
   starsEl.appendChild(s);
 }
-
+ 
 // ── SCIOLY EVENT CLOUDS ──
 const events = [
   { label: 'Astronomy',        emoji: '🔭' },
@@ -773,65 +767,170 @@ const events = [
   { label: 'Cyber Security',   emoji: '🛡️' },
   { label: 'Electric Vehicle', emoji: '🚗' },
 ];
-
+ 
 const cloudShapes = [
   { w: 110, h: 38, bumps: [{x:20,y:-22,r:26},{x:50,y:-30,r:32},{x:80,y:-20,r:24}] },
   { w: 90,  h: 32, bumps: [{x:25,y:-18,r:22},{x:55,y:-26,r:28},{x:78,y:-16,r:20}] },
   { w: 130, h: 42, bumps: [{x:18,y:-24,r:28},{x:45,y:-34,r:36},{x:72,y:-28,r:30},{x:90,y:-18,r:22}] },
 ];
-
+ 
 const sky = document.getElementById('sky');
-
+ 
 function spawnCloud(eventData, delayMs) {
   const shape = cloudShapes[Math.floor(Math.random() * cloudShapes.length)];
   const scale = 0.8 + Math.random() * 0.7;
   const top = 8 + Math.random() * 82;
   const duration = 28 + Math.random() * 40;
-
+ 
   const cloud = document.createElement('div');
   cloud.className = 'cloud';
   cloud.style.cssText = `top:${top}%;animation:floatCloud ${duration}s linear ${delayMs}ms infinite;filter:drop-shadow(0 4px 8px rgba(100,140,200,0.18));`;
-
+ 
   const body = document.createElement('div');
   body.className = 'cloud-body';
   body.style.cssText = `position:relative;width:${shape.w*scale}px;height:${shape.h*scale}px;`;
-
+ 
   const base = document.createElement('div');
   base.style.cssText = `position:absolute;bottom:0;left:0;width:${shape.w*scale}px;height:${shape.h*scale}px;border-radius:50px;background:white;`;
   body.appendChild(base);
-
+ 
   shape.bumps.forEach(b => {
     const bump = document.createElement('div');
     const r = b.r * scale;
     bump.style.cssText = `position:absolute;width:${r*2}px;height:${r*2}px;border-radius:50%;background:white;left:${(b.x/100)*shape.w*scale-r}px;bottom:${shape.h*scale-8*scale}px;`;
     body.appendChild(bump);
   });
-
+ 
   const inner = document.createElement('div');
   inner.style.cssText = `position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;`;
-
+ 
   const em = document.createElement('div');
   em.style.cssText = `font-size:${Math.round(14*scale)}px;line-height:1;`;
   em.textContent = eventData.emoji;
-
+ 
   const lbl = document.createElement('div');
   lbl.style.cssText = `font-family:'Fredoka One',cursive;font-size:${Math.round(9*scale)}px;color:#5577aa;white-space:nowrap;`;
   lbl.textContent = eventData.label;
-
+ 
   inner.appendChild(em);
   inner.appendChild(lbl);
   body.appendChild(inner);
   cloud.appendChild(body);
   sky.appendChild(cloud);
 }
-
+ 
 let delay = 0;
 for (let i = 0; i < 42; i++) {
   spawnCloud(events[i % events.length], delay);
   delay += 1600 + Math.random() * 1800;
 }
+ 
+// ── CAT ON PAPER AIRPLANE ──
+function spawnCatPlane() {
+  // pick a random vertical position (15–75% of viewport)
+  const top = 15 + Math.random() * 60;
+  // random duration 7–11s
+  const dur = 7 + Math.random() * 4;
+  // random scale 0.85–1.2
+  const sc = 0.85 + Math.random() * 0.35;
+ 
+  const wrapper = document.createElement('div');
+  wrapper.style.cssText = `
+    position:fixed;
+    top:${top}vh;
+    left:110vw;
+    z-index:9999;
+    pointer-events:none;
+    animation:catFly ${dur}s linear forwards;
+    transform-origin:center center;
+  `;
+ 
+  // SVG: paper airplane + cat riding on top
+  wrapper.innerHTML = `
+    <svg width="${Math.round(160*sc)}" height="${Math.round(110*sc)}"
+         viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+ 
+      <!-- PAPER AIRPLANE -->
+      <!-- main body -->
+      <polygon points="10,70 150,45 10,20" fill="#e8f0ff" stroke="#99aadd" stroke-width="1.5"/>
+      <!-- bottom flap -->
+      <polygon points="10,70 80,55 10,20" fill="#ccd8f8" stroke="#99aadd" stroke-width="1"/>
+      <!-- fold line -->
+      <line x1="10" y1="45" x2="150" y2="45" stroke="#99aadd" stroke-width="0.8" stroke-dasharray="4,3"/>
+ 
+      <!-- CAT sitting on top of plane wing -->
+      <!-- body -->
+      <ellipse cx="62" cy="28" rx="16" ry="13" fill="#f5c842"/>
+      <!-- head -->
+      <ellipse cx="62" cy="13" rx="12" ry="11" fill="#f5c842"/>
+      <!-- ears -->
+      <polygon points="52,6 55,16 48,16" fill="#f5c842"/>
+      <polygon points="53,8 56,15 50,15" fill="#f8b4c0"/>
+      <polygon points="72,6 69,16 76,16" fill="#f5c842"/>
+      <polygon points="71,8 68,15 74,15" fill="#f8b4c0"/>
+      <!-- face -->
+      <!-- eyes (wide open, excited) -->
+      <circle cx="57" cy="12" r="3.5" fill="white"/>
+      <circle cx="67" cy="12" r="3.5" fill="white"/>
+      <circle cx="58" cy="12.5" r="2" fill="#222"/>
+      <circle cx="68" cy="12.5" r="2" fill="#222"/>
+      <!-- eye shine -->
+      <circle cx="59" cy="11.5" r="0.8" fill="white"/>
+      <circle cx="69" cy="11.5" r="0.8" fill="white"/>
+      <!-- nose -->
+      <ellipse cx="62" cy="17" rx="2" ry="1.2" fill="#f87a8a"/>
+      <!-- mouth -->
+      <path d="M59,18.5 Q62,21 65,18.5" fill="none" stroke="#c04060" stroke-width="1"/>
+      <!-- blush -->
+      <ellipse cx="54" cy="17" rx="3" ry="1.8" fill="#f8a0b0" opacity="0.5"/>
+      <ellipse cx="70" cy="17" rx="3" ry="1.8" fill="#f8a0b0" opacity="0.5"/>
+      <!-- whiskers left -->
+      <line x1="44" y1="15" x2="57" y2="17" stroke="#aaa" stroke-width="0.8"/>
+      <line x1="44" y1="18" x2="57" y2="18" stroke="#aaa" stroke-width="0.8"/>
+      <!-- whiskers right -->
+      <line x1="80" y1="15" x2="67" y2="17" stroke="#aaa" stroke-width="0.8"/>
+      <line x1="80" y1="18" x2="67" y2="18" stroke="#aaa" stroke-width="0.8"/>
+      <!-- paws gripping the plane edge -->
+      <ellipse cx="50" cy="39" rx="6" ry="4" fill="#f5c842"/>
+      <ellipse cx="74" cy="39" rx="6" ry="4" fill="#f5c842"/>
+      <!-- little toe lines -->
+      <line x1="47" y1="41" x2="47" y2="43" stroke="#e0a800" stroke-width="0.8"/>
+      <line x1="50" y1="42" x2="50" y2="44" stroke="#e0a800" stroke-width="0.8"/>
+      <line x1="53" y1="41" x2="53" y2="43" stroke="#e0a800" stroke-width="0.8"/>
+      <line x1="71" y1="41" x2="71" y2="43" stroke="#e0a800" stroke-width="0.8"/>
+      <line x1="74" y1="42" x2="74" y2="44" stroke="#e0a800" stroke-width="0.8"/>
+      <line x1="77" y1="41" x2="77" y2="43" stroke="#e0a800" stroke-width="0.8"/>
+      <!-- tail curling up behind -->
+      <path d="M78,35 Q100,10 90,2 Q82,-4 78,5" fill="none" stroke="#f5c842" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- scarf / wind effect lines -->
+      <path d="M40,10 Q30,8 20,12" fill="none" stroke="#ffaacc" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <path d="M42,14 Q28,14 18,18" fill="none" stroke="#ffaacc" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+    </svg>
+  `;
+ 
+  document.body.appendChild(wrapper);
+ 
+  // remove after animation ends
+  setTimeout(() => wrapper.remove(), (dur + 0.5) * 1000);
+}
+ 
+// inject keyframe once
+const catStyle = document.createElement('style');
+catStyle.textContent = `
+  @keyframes catFly {
+    0%   { left: 110vw; transform: translateY(0px) rotate(-3deg); }
+    20%  { transform: translateY(-12px) rotate(-5deg); }
+    40%  { transform: translateY(6px) rotate(-2deg); }
+    60%  { transform: translateY(-8px) rotate(-4deg); }
+    80%  { transform: translateY(4px) rotate(-2deg); }
+    100% { left: -220px; transform: translateY(0px) rotate(-3deg); }
+  }
+`;
+document.head.appendChild(catStyle);
+ 
+// fly immediately on load, then every 60 seconds
+spawnCatPlane();
+setInterval(spawnCatPlane, 60000);
 </script>
 </body>
 </html>
-ENDOFFILE
-echo "Done"
