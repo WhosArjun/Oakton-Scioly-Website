@@ -1,3 +1,4 @@
+cat << 'ENDOFFILE' > /mnt/user-data/outputs/oakton_scioly_v2.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,46 +9,32 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Nunito', system-ui, sans-serif; background: #d6eaff; overflow-x: hidden; }
- 
-  /* ── CLOUD SKY BACKGROUND ── */
+
   .sky {
     position: fixed; inset: 0; z-index: 0;
     background: linear-gradient(180deg, #b8d9f8 0%, #d6eaff 60%, #e8f4ff 100%);
     pointer-events: none; overflow: hidden;
   }
   .sun {
-    position: absolute; top: 40px; right: 80px;
-    width: 70px; height: 70px;
+    position: absolute; top: 40px; right: 80px; width: 70px; height: 70px;
     background: radial-gradient(circle, #ffe066 60%, #ffb300 100%);
-    border-radius: 50%;
-    box-shadow: 0 0 40px 10px #ffe06688;
+    border-radius: 50%; box-shadow: 0 0 40px 10px #ffe06688;
     animation: sunPulse 4s ease-in-out infinite alternate;
   }
   @keyframes sunPulse { from { box-shadow: 0 0 40px 10px #ffe06688; } to { box-shadow: 0 0 70px 20px #ffe066aa; } }
-  .cloud {
-    position: absolute;
-    display: flex; flex-direction: column; align-items: center;
-    animation: floatCloud linear infinite;
-    filter: drop-shadow(0 4px 8px rgba(100,140,200,0.18));
-  }
+  .cloud { position: absolute; display: flex; flex-direction: column; align-items: center; animation: floatCloud linear infinite; filter: drop-shadow(0 4px 8px rgba(100,140,200,0.18)); }
   .cloud-body { position: relative; display: flex; align-items: flex-end; justify-content: center; }
   .cloud-base { border-radius: 50px; background: white; }
   .cloud-bump { position: absolute; border-radius: 50%; background: white; }
-  .cloud-label {
-    font-family: 'Fredoka One', cursive; font-size: 11px;
-    color: #5577aa; margin-top: 2px; white-space: nowrap;
-    letter-spacing: 0.02em; text-align: center; padding: 0 4px;
-  }
+  .cloud-label { font-family: 'Fredoka One', cursive; font-size: 11px; color: #5577aa; margin-top: 2px; white-space: nowrap; letter-spacing: 0.02em; text-align: center; padding: 0 4px; }
   .cloud-emoji { font-size: 16px; line-height: 1; margin-bottom: 1px; }
   @keyframes floatCloud { from { transform: translateX(110vw); } to { transform: translateX(-320px); } }
- 
-  /* ── CONTENT ── */
+
   .content { position: relative; z-index: 1; }
- 
+
   .hero {
     background: linear-gradient(180deg, #0a0a2e 0%, #1a1a5e 100%);
-    padding: 3.5rem 2rem 4rem;
-    text-align: center; position: relative; overflow: hidden;
+    padding: 3.5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden;
   }
   .stars { position: absolute; inset: 0; pointer-events: none; }
   .star { position: absolute; border-radius: 50%; background: rgba(237,233,233,0.85); animation: twinkle 3s infinite alternate; }
@@ -65,7 +52,7 @@
   .hero-stats { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
   .hero-stat .num { font-family: 'Fredoka One', cursive; font-size: 1.9rem; color: #fff; }
   .hero-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.05em; }
- 
+
   .nav-tabs {
     display: flex; justify-content: center;
     background: rgba(255,255,255,0.88); backdrop-filter: blur(10px);
@@ -73,24 +60,18 @@
     position: sticky; top: 0; z-index: 10; padding: 0 0.5rem; overflow-x: auto;
   }
   .tab-btn {
-    padding: 0.8rem 1.1rem; font-size: 13px; font-weight: 700;
-    font-family: 'Nunito', sans-serif;
+    padding: 0.8rem 1.1rem; font-size: 13px; font-weight: 700; font-family: 'Nunito', sans-serif;
     color: #5577aa; background: none; border: none; cursor: pointer;
     border-bottom: 2.5px solid transparent; transition: color 0.15s, border-color 0.15s; white-space: nowrap;
   }
   .tab-btn.active { color: #2244cc; border-bottom-color: #2244cc; }
   .tab-btn:hover:not(.active) { color: #2244cc; }
- 
+
   .section { padding: 1.75rem 1.25rem; max-width: 880px; margin: 0 auto; }
   .section-title { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #2244cc; margin-bottom: 1.1rem; display: flex; align-items: center; gap: 8px; }
- 
-  /* TEAMS */
+
   .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 16px; }
-  .team-card {
-    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
-    border: 1.5px solid #cce0f5; border-radius: 18px; overflow: hidden;
-    box-shadow: 0 4px 20px rgba(100,150,220,0.10);
-  }
+  .team-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); border: 1.5px solid #cce0f5; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(100,150,220,0.10); }
   .team-header-bar { padding: 1rem 1.2rem 0.75rem; display: flex; align-items: center; gap: 10px; }
   .team-emoji { font-size: 1.7rem; }
   .team-name-big { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #1a2a66; }
@@ -104,40 +85,21 @@
   .member-chips { display: flex; flex-wrap: wrap; gap: 4px; }
   .member-chip { font-size: 11px; color: #446699; background: #e8f2ff; border: 1px solid #cce0f5; padding: 3px 8px; border-radius: 11px; font-weight: 600; }
   .member-chip.cap { font-weight: 700; }
- 
-  /* CAPTAINS */
+
   .captains-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 12px; }
-  .captain-card {
-    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
-    border: 1.5px solid #cce0f5; border-radius: 18px; padding: 1.2rem; text-align: center;
-    box-shadow: 0 4px 20px rgba(100,150,220,0.10);
-  }
+  .captain-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); border: 1.5px solid #cce0f5; border-radius: 18px; padding: 1.2rem; text-align: center; box-shadow: 0 4px 20px rgba(100,150,220,0.10); }
   .big-avatar { width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 9px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; border: 2px solid white; }
   .captain-card .cname { font-family: 'Fredoka One', cursive; font-size: 14px; color: #1a2a66; }
   .captain-card .cteam { font-size: 11px; margin-top: 5px; padding: 3px 9px; border-radius: 11px; display: inline-block; font-weight: 700; }
-  .captain-bio {
-    margin-top: 0.9rem; font-size: 12px; line-height: 1.5; color: #555;
-    text-align: left; background: #f0f6ff; border: 1px solid #cce0f5;
-    padding: 0.8rem; border-radius: 10px; font-style: italic;
-    border-left: 3px solid #3344cc;
-  }
- 
-  /* AWARDS */
+  .captain-bio { margin-top: 0.9rem; font-size: 12px; line-height: 1.5; color: #555; text-align: left; background: #f0f6ff; border: 1px solid #cce0f5; padding: 0.8rem; border-radius: 10px; font-style: italic; border-left: 3px solid #3344cc; }
+
   .filter-row { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 0.85rem; }
-  .filter-btn {
-    padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer;
-    border: 1.5px solid #cce0f5; background: rgba(255,255,255,0.85); color: #5577aa;
-    transition: all 0.15s; font-family: 'Nunito', sans-serif; font-weight: 700;
-  }
+  .filter-btn { padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; border: 1.5px solid #cce0f5; background: rgba(255,255,255,0.85); color: #5577aa; transition: all 0.15s; font-family: 'Nunito', sans-serif; font-weight: 700; }
   .filter-btn.active { background: #2244cc; color: #fff; border-color: #2244cc; }
   .filter-btn.type-btn.active { background: #0a0a2e; color: #fff; border-color: #0a0a2e; }
- 
+
   .awards-group { display: flex; flex-direction: column; gap: 2rem; }
-  .tourney-block {
-    background: rgba(255,255,255,0.78); backdrop-filter: blur(8px);
-    border: 1.5px solid #cce0f5; border-radius: 18px; padding: 1.2rem;
-    box-shadow: 0 4px 20px rgba(100,150,220,0.08);
-  }
+  .tourney-block { background: rgba(255,255,255,0.78); backdrop-filter: blur(8px); border: 1.5px solid #cce0f5; border-radius: 18px; padding: 1.2rem; box-shadow: 0 4px 20px rgba(100,150,220,0.08); }
   .tourney-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.9rem; padding-bottom: 0.6rem; border-bottom: 1px solid #cce0f5; flex-wrap: wrap; }
   .tourney-name { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #1a2a66; }
   .tourney-date { font-size: 12px; color: #88aacc; font-weight: 600; }
@@ -150,81 +112,106 @@
   .p3 { background: #ffe8d6; color: #7a3500; }
   .ptop { background: #e0eaff; color: #2233aa; }
   .event-name { font-size: 11.5px; color: #446699; line-height: 1.3; font-weight: 600; }
- 
+
   .solar-stripe { background: linear-gradient(90deg,rgba(255,248,220,0.9),rgba(255,243,200,0.9)); border-left: 3px solid #e8a800; }
   .lunar-stripe { background: linear-gradient(90deg,rgba(229,234,255,0.9),rgba(216,224,255,0.9)); border-left: 3px solid #3344cc; }
   .eclipse-stripe { background: linear-gradient(90deg,rgba(240,229,255,0.9),rgba(232,216,255,0.9)); border-left: 3px solid #7722cc; }
- 
+
   .tab-content { display: none; }
   .tab-content.active { display: block; }
- 
-  .states-banner {
-    background: linear-gradient(135deg, #0a0a2e, #2222aa);
-    border-radius: 16px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; color: white;
-    box-shadow: 0 8px 30px rgba(20,20,180,0.2);
-  }
+
+  .states-banner { background: linear-gradient(135deg, #0a0a2e, #2222aa); border-radius: 16px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; color: white; box-shadow: 0 8px 30px rgba(20,20,180,0.2); }
   .states-banner .big { font-family: 'Fredoka One', cursive; font-size: 1.8rem; }
   .states-banner .sub { font-size: 0.9rem; opacity: 0.75; margin-top: 4px; }
- 
-  /* ABOUT */
-  .about-hero {
-    background: linear-gradient(135deg,#0a0a2e,#2222aa);
-    color: white; padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem;
-    box-shadow: 0 8px 30px rgba(20,20,180,0.2);
-  }
+
+  .about-hero { background: linear-gradient(135deg,#0a0a2e,#2222aa); color: white; padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem; box-shadow: 0 8px 30px rgba(20,20,180,0.2); }
   .about-hero h2 { font-family: 'Fredoka One', cursive; font-size: 1.8rem; margin-bottom: 0.7rem; }
   .about-hero p { color: rgba(255,255,255,0.78); line-height: 1.6; max-width: 700px; }
   .about-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(250px,1fr)); gap: 16px; }
-  .about-card {
-    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
-    border: 1.5px solid #cce0f5; border-radius: 16px; padding: 1.2rem;
-    box-shadow: 0 4px 20px rgba(100,150,220,0.08);
-  }
+  .about-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); border: 1.5px solid #cce0f5; border-radius: 16px; padding: 1.2rem; box-shadow: 0 4px 20px rgba(100,150,220,0.08); }
   .about-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
   .about-title { font-family: 'Fredoka One', cursive; font-size: 1rem; margin-bottom: 0.6rem; color: #1a2a66; }
   .about-card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
- 
-  /* RESOURCES */
+
   .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 14px; }
-  .resource-card {
-    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
-    border: 1.5px solid #cce0f5; border-radius: 16px; padding: 1.2rem;
-    box-shadow: 0 4px 20px rgba(100,150,220,0.08);
-    text-decoration: none; display: block; transition: transform 0.15s, box-shadow 0.15s;
-  }
+  .resource-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); border: 1.5px solid #cce0f5; border-radius: 16px; padding: 1.2rem; box-shadow: 0 4px 20px rgba(100,150,220,0.08); text-decoration: none; display: block; transition: transform 0.15s, box-shadow 0.15s; }
   .resource-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(100,150,220,0.18); }
   .resource-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
   .resource-title { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #1a2a66; margin-bottom: 0.4rem; }
   .resource-desc { font-size: 0.85rem; color: #557799; line-height: 1.5; }
- 
-  /* FOOTER */
-  .footer {
-    margin-top: 3rem; background: #0a0a2e;
-    border-top: 1px solid rgba(255,255,255,0.08); color: white; padding: 2.2rem 1.5rem;
-    position: relative; z-index: 1;
+
+  /* ── BLOG ── */
+  .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-bottom: 2rem; }
+  .blog-btn {
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
+    border: 1.5px solid #cce0f5; border-radius: 16px; padding: 1.2rem 1.4rem;
+    cursor: pointer; text-align: left; transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 16px rgba(100,150,220,0.08); width: 100%;
+    font-family: 'Nunito', sans-serif;
   }
+  .blog-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(100,150,220,0.18); }
+  .blog-btn.active-post { border-color: #2244cc; background: #eef2ff; }
+  .blog-btn-emoji { font-size: 1.6rem; margin-bottom: 0.4rem; display: block; }
+  .blog-btn-title { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #1a2a66; margin-bottom: 3px; }
+  .blog-btn-date { font-size: 11px; color: #88aacc; font-weight: 600; }
+  .blog-btn-place { font-size: 12px; font-weight: 700; margin-top: 5px; display: inline-block; padding: 2px 8px; border-radius: 10px; }
+
+  .blog-post {
+    display: none;
+    background: rgba(255,255,255,0.88); backdrop-filter: blur(8px);
+    border: 1.5px solid #cce0f5; border-radius: 18px; padding: 1.6rem;
+    box-shadow: 0 4px 20px rgba(100,150,220,0.10); margin-top: 0.5rem;
+  }
+  .blog-post.visible { display: block; }
+  .blog-post-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 1.2rem; flex-wrap: wrap; }
+  .blog-post-emoji { font-size: 2.5rem; }
+  .blog-post-title { font-family: 'Fredoka One', cursive; font-size: 1.4rem; color: #1a2a66; }
+  .blog-post-meta { font-size: 12px; color: #88aacc; font-weight: 600; margin-top: 2px; }
+  .blog-highlight { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.2rem; }
+  .blog-highlight-chip { padding: 4px 12px; border-radius: 14px; font-size: 12px; font-weight: 700; }
+  .blog-body { font-size: 0.92rem; color: #445; line-height: 1.75; }
+  .blog-body p { margin-bottom: 0.9rem; }
+  .blog-body strong { color: #1a2a66; }
+  .blog-close {
+    margin-top: 1.2rem; padding: 7px 18px; border-radius: 20px;
+    background: #e8eeff; color: #2244cc; border: 1.5px solid #cce0f5;
+    font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .blog-close:hover { background: #2244cc; color: white; }
+
+  /* ── TRYOUTS ── */
+  .tryout-hero { background: linear-gradient(135deg,#0a0a2e,#2222aa); color: white; padding: 2rem; border-radius: 16px; margin-bottom: 1.5rem; box-shadow: 0 8px 30px rgba(20,20,180,0.2); }
+  .tryout-hero h2 { font-family: 'Fredoka One', cursive; font-size: 1.8rem; margin-bottom: 0.7rem; }
+  .tryout-hero p { color: rgba(255,255,255,0.78); line-height: 1.6; }
+  .tryout-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-bottom: 1.5rem; }
+  .tryout-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); border: 1.5px solid #cce0f5; border-radius: 16px; padding: 1.2rem; box-shadow: 0 4px 20px rgba(100,150,220,0.08); }
+  .tryout-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+  .tryout-title { font-family: 'Fredoka One', cursive; font-size: 1rem; color: #1a2a66; margin-bottom: 0.5rem; }
+  .tryout-card p, .tryout-card li { font-size: 0.88rem; color: #555; line-height: 1.65; }
+  .tryout-card ul { padding-left: 1.1rem; margin-top: 0.4rem; }
+  .tryout-card li { margin-bottom: 0.25rem; }
+  .tryout-banner { background: linear-gradient(90deg,#fff3cc,#ffe8a0); border: 1.5px solid #e8c060; border-radius: 14px; padding: 1.1rem 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; }
+  .tryout-banner-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .tryout-banner-text { font-size: 0.9rem; color: #7a5000; line-height: 1.55; }
+  .tryout-banner-text strong { display: block; font-family: 'Fredoka One', cursive; font-size: 1rem; margin-bottom: 2px; color: #5a3500; }
+
+  .footer { margin-top: 3rem; background: #0a0a2e; border-top: 1px solid rgba(255,255,255,0.08); color: white; padding: 2.2rem 1.5rem; position: relative; z-index: 1; }
   .footer-content { max-width: 1000px; margin: 0 auto; text-align: center; }
   .footer-title { font-family: 'Fredoka One', cursive; font-size: 1.1rem; margin-bottom: 0.3rem; }
   .footer-sub { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; }
   .footer-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 1.2rem 0; }
-  .footer-link {
-    text-decoration: none; color: #dbe4ff; background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.08); padding: 0.65rem 1rem;
-    border-radius: 10px; font-size: 0.85rem; transition: all 0.18s;
-  }
+  .footer-link { text-decoration: none; color: #dbe4ff; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); padding: 0.65rem 1rem; border-radius: 10px; font-size: 0.85rem; transition: all 0.18s; }
   .footer-link:hover { background: #3344cc; color: white; transform: translateY(-2px); }
   .footer-bottom { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 1rem; }
 </style>
 </head>
 <body>
- 
-<!-- SKY -->
-<div class="sky" id="sky">
-  <div class="sun"></div>
-</div>
- 
+
+<div class="sky" id="sky"><div class="sun"></div></div>
+
 <div class="content">
- 
+
 <div class="hero">
   <div class="stars" id="stars"></div>
   <div style="position:relative;z-index:1;">
@@ -239,23 +226,22 @@
     </div>
   </div>
 </div>
- 
+
 <div class="nav-tabs">
   <button class="tab-btn active" onclick="showTab('teams',this)">👥 Teams</button>
   <button class="tab-btn" onclick="showTab('captains',this)">⭐ Captains</button>
   <button class="tab-btn" onclick="showTab('awards',this)">🏆 Awards</button>
+  <button class="tab-btn" onclick="showTab('blog',this)">🌍 Blog</button>
+  <button class="tab-btn" onclick="showTab('tryouts',this)">🎯 Tryouts</button>
   <button class="tab-btn" onclick="showTab('resources',this)">📚 Resources</button>
   <button class="tab-btn" onclick="showTab('about',this)">📖 About</button>
-  <button class = "tab-btn" onclick = "showTab('blog', this)">🌍 Blog</button>
-  <button class = "tab-btn" onlclick = "showTab('tryout information', this)">🎯 Tryout Information</button>
 </div>
- 
+
 <!-- TEAMS -->
 <div id="tab-teams" class="tab-content active">
   <div class="section">
     <div class="section-title">☁️ Team Rosters</div>
     <div class="team-grid">
- 
       <div class="team-card">
         <div class="team-header-bar solar-stripe">
           <span class="team-emoji">☀️</span>
@@ -288,7 +274,6 @@
           </div>
         </div>
       </div>
- 
       <div class="team-card">
         <div class="team-header-bar lunar-stripe">
           <span class="team-emoji">🌙</span>
@@ -307,7 +292,6 @@
           </div>
         </div>
       </div>
- 
       <div class="team-card">
         <div class="team-header-bar eclipse-stripe">
           <span class="team-emoji">🌑</span>
@@ -326,63 +310,25 @@
           </div>
         </div>
       </div>
- 
     </div>
   </div>
 </div>
- 
+
 <!-- CAPTAINS -->
 <div id="tab-captains" class="tab-content">
   <div class="section">
     <div class="section-title">⭐ Captains</div>
     <div class="captains-grid">
- 
-      <div class="captain-card">
-        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">AZ</div>
-        <div class="cname">Albert Zhu</div>
-        <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">"Hi I'm Albert, nothing much to say I'm just the goat, I have so much aura I'm GREEN GREEN."</p>
-      </div>
- 
-      <div class="captain-card">
-        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">BL</div>
-        <div class="cname">Brandon Lin</div>
-        <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">"Hi I'm brandon, I love codebusters favorite events I also LOVE pokemon, I'm going to bust your code..."</p>
-      </div>
- 
-      <div class="captain-card">
-        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">CH</div>
-        <div class="cname">Chunmin Huang</div>
-        <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">"Hi I'm Chunmin I'm chunjie's twin, bet you didn't know that. (She better not copy me)"</p>
-      </div>
- 
-      <div class="captain-card">
-        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">CH</div>
-        <div class="cname">Chunjie Huang</div>
-        <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">"Hi I'm Chunjie, and I am Chunmins Twin, bet you didn't know that."</p>
-      </div>
- 
-      <div class="captain-card">
-        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">LK</div>
-        <div class="cname">Linus Koepcke</div>
-        <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">"Hi I'm Linus, and I give out high fives for free IQ points, I love Scioly and im linear!"</p>
-      </div>
- 
-      <div class="captain-card">
-        <div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div>
-        <div class="cname">Sara Shaddarsanam</div>
-        <span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span>
-        <p class="captain-bio">"Hellooo! I'm Sara. I've been in SciOly since freshman year. I have an addiction to cake and Tinkaton."</p>
-      </div>
- 
+      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">AZ</div><div class="cname">Albert Zhu</div><span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span><p class="captain-bio">"Hi I'm Albert, nothing much to say I'm just the goat, I have so much aura I'm GREEN GREEN."</p></div>
+      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">BL</div><div class="cname">Brandon Lin</div><span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span><p class="captain-bio">"Hi I'm brandon, I love codebusters favorite events I also LOVE pokemon, I'm going to bust your code..."</p></div>
+      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">CH</div><div class="cname">Chunmin Huang</div><span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span><p class="captain-bio">"Hi I'm Chunmin I'm chunjie's twin, bet you didn't know that. (She better not copy me)"</p></div>
+      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">CH</div><div class="cname">Chunjie Huang</div><span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span><p class="captain-bio">"Hi I'm Chunjie, and I am Chunmins Twin, bet you didn't know that."</p></div>
+      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">LK</div><div class="cname">Linus Koepcke</div><span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span><p class="captain-bio">"Hi I'm Linus, and I give out high fives for free IQ points, I love Scioly and im linear!"</p></div>
+      <div class="captain-card"><div class="big-avatar" style="background:#ffd87a;color:#7a4a00;">SS</div><div class="cname">Sara Shaddarsanam</div><span class="cteam" style="background:#fff3cc;color:#7a4a00;">☀️ Solar</span><p class="captain-bio">"Hellooo! I'm Sara. I've been in SciOly since freshman year. I have an addiction to cake and Tinkaton."</p></div>
     </div>
   </div>
 </div>
- 
+
 <!-- AWARDS -->
 <div id="tab-awards" class="tab-content">
   <div class="section">
@@ -396,9 +342,7 @@
       <button class="filter-btn" onclick="filterTeam('solar', this)">☀️ Solar</button>
       <button class="filter-btn" onclick="filterTeam('lunar', this)">🌙 Lunar</button>
       <button class="filter-btn" onclick="filterTeam('eclipse', this)">🌑 Eclipse</button>
-
     </div>
- 
     <div id="invite-results" class="awards-group">
       <div class="tourney-block" data-teams="solar lunar">
         <div class="tourney-header">
@@ -433,11 +377,13 @@
           <div class="event-card" data-team="lunar"><span class="place-badge ptop">6th</span><span class="event-name">Remote Sensing 🌙</span></div>
         </div>
       </div>
- 
       <div class="tourney-block" data-teams="solar lunar eclipse">
         <div class="tourney-header">
           <div><div class="tourney-name">Fairfax Invitational</div><div class="tourney-date">January 10, 2026</div></div>
-          <div style="margin-left:auto;"><span class="overall-badge" style="background:#fff3cc;color:#7a4a00;">☀️ Solar — 2nd / 70 teams</span></div>
+          <div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="overall-badge" style="background:#fff3cc;color:#7a4a00;">☀️ Solar — 2nd / 70 teams</span>
+            <span class="overall-badge" style="background:#dde4ff;color:#1a2a99;">🌙 Lunar — 16th / 70</span>
+          </div>
         </div>
         <div class="events-grid">
           <div class="event-card" data-team="solar"><span class="place-badge p1">1st</span><span class="event-name">Astronomy ☀️</span></div>
@@ -458,10 +404,13 @@
           <div class="event-card" data-team="lunar"><span class="place-badge ptop">5th</span><span class="event-name">Materials Science 🌙</span></div>
         </div>
       </div>
- 
       <div class="tourney-block" data-teams="solar lunar eclipse">
         <div class="tourney-header">
           <div><div class="tourney-name">Virginia Tech Invitational</div><div class="tourney-date">January 31, 2026</div></div>
+          <div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="overall-badge" style="background:#fff3cc;color:#7a4a00;">☀️ Solar — 4th / 32</span>
+            <span class="overall-badge" style="background:#dde4ff;color:#1a2a99;">🌙 Lunar — 12th / 32</span>
+          </div>
         </div>
         <div class="events-grid">
           <div class="event-card" data-team="solar"><span class="place-badge p1">1st</span><span class="event-name">Codebusters ☀️</span></div>
@@ -478,29 +427,19 @@
           <div class="event-card" data-team="solar"><span class="place-badge ptop">4th</span><span class="event-name">Who's That Pokémon ☀️</span></div>
           <div class="event-card" data-team="eclipse"><span class="place-badge ptop">4th</span><span class="event-name">Hovercraft 🌑</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge ptop">5th</span><span class="event-name">Anatomy &amp; Phys ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">5th</span><span class="event-name">EV (TRIAL) ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge ptop">5th</span><span class="event-name">Remote Sensing ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">5th</span><span class="event-name">Robot Tour ☀️</span></div>
-          <div class="event-card" data-team="solar"><span class="place-badge ptop">6th</span><span class="event-name">Designer Genes ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge ptop">6th</span><span class="event-name">Disease Detectives ☀️</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge ptop">6th</span><span class="event-name">Machines ☀️</span></div>
           <div class="event-card" data-team="lunar"><span class="place-badge ptop">6th</span><span class="event-name">Remote Sensing 🌙</span></div>
           <div class="event-card" data-team="eclipse"><span class="place-badge ptop">7th</span><span class="event-name">Anatomy &amp; Phys 🌑</span></div>
-          <div class="event-card" data-team="eclipse"><span class="place-badge ptop">7th</span><span class="event-name">Who's That Pokémon 🌑</span></div>
           <div class="event-card" data-team="lunar"><span class="place-badge ptop">7th</span><span class="event-name">Materials Science 🌙</span></div>
-          <div class="event-card" data-team="lunar"><span class="place-badge ptop">7th</span><span class="event-name">Robot Tour 🌙</span></div>
           <div class="event-card" data-team="solar"><span class="place-badge ptop">8th</span><span class="event-name">Chemistry Lab ☀️</span></div>
           <div class="event-card" data-team="eclipse"><span class="place-badge ptop">8th</span><span class="event-name">Circuit Lab 🌑</span></div>
           <div class="event-card" data-team="lunar"><span class="place-badge ptop">8th</span><span class="event-name">Codebusters 🌙</span></div>
-          <div class="event-card" data-team="lunar"><span class="place-badge ptop">8th</span><span class="event-name">Forensics 🌙</span></div>
-          <div class="event-card" data-team="lunar"><span class="place-badge ptop">8th</span><span class="event-name">Helicopter 🌙</span></div>
-          <div class="event-card" data-team="lunar"><span class="place-badge ptop">8th</span><span class="event-name">Who's That Pokémon 🌙</span></div>
-          <div class="event-card" data-team="eclipse"><span class="place-badge ptop">9th</span><span class="event-name">Remote Sensing 🌑</span></div>
           <div class="event-card" data-team="lunar"><span class="place-badge ptop">9th</span><span class="event-name">Chemistry Lab 🌙</span></div>
           <div class="event-card" data-team="eclipse"><span class="place-badge ptop">10th</span><span class="event-name">Designer Genes 🌑</span></div>
         </div>
       </div>
- 
       <div class="tourney-block" data-teams="solar">
         <div class="tourney-header">
           <div><div class="tourney-name">Princeton Invitational</div><div class="tourney-date">February 7, 2026</div></div>
@@ -516,7 +455,6 @@
           <div class="event-card" data-team="solar"><span class="place-badge ptop">9th</span><span class="event-name">Hovercraft ☀️</span></div>
         </div>
       </div>
- 
       <div class="tourney-block" data-teams="solar lunar eclipse">
         <div class="tourney-header">
           <div><div class="tourney-name">Boyceville Satellite Invitational</div><div class="tourney-date">December 1, 2025</div></div>
@@ -529,7 +467,7 @@
         </div>
       </div>
     </div>
- 
+
     <div id="official-results" class="awards-group" style="display:none;">
       <div class="states-banner">
         <div class="big">🥈 2nd Place — Virginia States 2026</div>
@@ -538,7 +476,10 @@
       <div class="tourney-block" data-teams="solar lunar eclipse">
         <div class="tourney-header">
           <div><div class="tourney-name">Virginia Regional Tournament @ UMW</div><div class="tourney-date">February 28, 2026</div></div>
-          <div style="margin-left:auto;"><span class="overall-badge" style="background:#e8e8e8;color:#333;">☀️ Solar — 6th overall</span></div>
+          <div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">
+            <span class="overall-badge" style="background:#e8e8e8;color:#333;">☀️ Solar — 6th overall</span>
+            <span class="overall-badge" style="background:#dde4ff;color:#1a2a99;">🌙 Lunar — 21st overall</span>
+          </div>
         </div>
         <div class="events-grid">
           <div class="event-card" data-team="solar"><span class="place-badge p1">1st</span><span class="event-name">Codebusters ☀️</span></div>
@@ -596,86 +537,307 @@
     </div>
   </div>
 </div>
- 
+
+<!-- BLOG -->
+<div id="tab-blog" class="tab-content">
+  <div class="section">
+    <div class="section-title">🌍 Competition Blog</div>
+    <p style="font-size:0.9rem;color:#557799;margin-bottom:1.2rem;">Click any competition below to read about how we did!</p>
+
+    <div class="blog-grid">
+      <button class="blog-btn" onclick="toggleBlog('boyceville')">
+        <span class="blog-btn-emoji">🛰️</span>
+        <div class="blog-btn-title">Boyceville Satellite Invitational</div>
+        <div class="blog-btn-date">December 1, 2025</div>
+        <span class="blog-btn-place" style="background:#fff3cc;color:#7a4a00;">☀️ 1st in Rocks &amp; Minerals</span>
+      </button>
+      <button class="blog-btn" onclick="toggleBlog('flinthill')">
+        <span class="blog-btn-emoji">🏔️</span>
+        <div class="blog-btn-title">Flint Hill Invitational</div>
+        <div class="blog-btn-date">December 13, 2025</div>
+        <span class="blog-btn-place" style="background:#fff3cc;color:#7a4a00;">☀️ 1st Overall / 32 Teams</span>
+      </button>
+      <button class="blog-btn" onclick="toggleBlog('fairfax')">
+        <span class="blog-btn-emoji">🏛️</span>
+        <div class="blog-btn-title">Fairfax Invitational</div>
+        <div class="blog-btn-date">January 10, 2026</div>
+        <span class="blog-btn-place" style="background:#e8e8e8;color:#333;">☀️ 2nd Overall / 70 Teams</span>
+      </button>
+      <button class="blog-btn" onclick="toggleBlog('vtech')">
+        <span class="blog-btn-emoji">🦃</span>
+        <div class="blog-btn-title">Virginia Tech Invitational</div>
+        <div class="blog-btn-date">January 31, 2026</div>
+        <span class="blog-btn-place" style="background:#ffe8d6;color:#7a3500;">☀️ 4th Overall / 32 Teams</span>
+      </button>
+      <button class="blog-btn" onclick="toggleBlog('princeton')">
+        <span class="blog-btn-emoji">🎓</span>
+        <div class="blog-btn-title">Princeton Invitational</div>
+        <div class="blog-btn-date">February 7, 2026</div>
+        <span class="blog-btn-place" style="background:#e0eaff;color:#2233aa;">☀️ Top 10 Finishes</span>
+      </button>
+      <button class="blog-btn" onclick="toggleBlog('regionals')">
+        <span class="blog-btn-emoji">🏅</span>
+        <div class="blog-btn-title">Virginia Regionals @ UMW</div>
+        <div class="blog-btn-date">February 28, 2026</div>
+        <span class="blog-btn-place" style="background:#e8e8e8;color:#333;">☀️ 6th Overall</span>
+      </button>
+      <button class="blog-btn" onclick="toggleBlog('states')">
+        <span class="blog-btn-emoji">🥈</span>
+        <div class="blog-btn-title">Virginia States @ UVA</div>
+        <div class="blog-btn-date">March 21, 2026</div>
+        <span class="blog-btn-place" style="background:#e8e8e8;color:#333;">☀️ 2nd in Virginia!</span>
+      </button>
+    </div>
+
+    <!-- BLOG POSTS -->
+    <div id="blog-boyceville" class="blog-post">
+      <div class="blog-post-header">
+        <div class="blog-post-emoji">🛰️</div>
+        <div><div class="blog-post-title">Boyceville Satellite Invitational</div><div class="blog-post-meta">December 1, 2025 · Online Satellite Format</div></div>
+      </div>
+      <div class="blog-highlight">
+        <span class="blog-highlight-chip" style="background:#fff3cc;color:#7a4a00;">☀️ 1st — Rocks &amp; Minerals</span>
+        <span class="blog-highlight-chip" style="background:#ffe8d6;color:#7a3500;">☀️ 3rd — Dynamic Planet</span>
+        <span class="blog-highlight-chip" style="background:#e0eaff;color:#2233aa;">☀️ 4th — Codebusters</span>
+        <span class="blog-highlight-chip" style="background:#ffe8d6;color:#7a3500;">🌙 3rd — Dynamic Planet</span>
+      </div>
+      <div class="blog-body">
+        <p>Boyceville was our season opener — a satellite invitational format where schools compete remotely and results are compiled centrally. It was a great way to shake off the rust and get a read on where everyone stood heading into the winter invitationals.</p>
+        <p><strong>Solar</strong> kicked things off with a strong showing, claiming <strong>1st place in Rocks &amp; Minerals</strong> — a sign of things to come from Linus Koepcke and his event partners. The Codebusters crew of Brandon Lin, Clara Yin, and Ivy Xu also delivered a solid <strong>4th place</strong> finish in a highly competitive field.</p>
+        <p><strong>Lunar</strong> had a bright moment of their own, notching a <strong>3rd place in Dynamic Planet</strong> — a strong early result for a team that was still finding its chemistry.</p>
+        <p>Overall, Boyceville gave every team a confidence boost and a benchmark. The captains were already talking strategy for Flint Hill before results were even fully announced.</p>
+      </div>
+      <button class="blog-close" onclick="toggleBlog('boyceville')">✕ Close</button>
+    </div>
+
+    <div id="blog-flinthill" class="blog-post">
+      <div class="blog-post-header">
+        <div class="blog-post-emoji">🏔️</div>
+        <div><div class="blog-post-title">Flint Hill Invitational</div><div class="blog-post-meta">December 13, 2025 · Flint Hill School, Oakton VA</div></div>
+      </div>
+      <div class="blog-highlight">
+        <span class="blog-highlight-chip" style="background:#fff3cc;color:#7a4a00;">☀️ 1st Overall / 32 Teams</span>
+        <span class="blog-highlight-chip" style="background:#fff3cc;color:#7a4a00;">☀️ 5× First Place Events</span>
+        <span class="blog-highlight-chip" style="background:#dde4ff;color:#1a2a99;">🌙 11th Overall</span>
+      </div>
+      <div class="blog-body">
+        <p>Flint Hill was a statement. Competing right in our backyard in Oakton, Virginia, <strong>Solar went 1st overall out of 32 teams</strong> — a dominant performance that sent a clear message to the rest of the region.</p>
+        <p>Solar swept five events with first-place finishes: <strong>Astronomy, Chemistry Lab, Codebusters, Machines, and Remote Sensing</strong>. Chunmin and Chunjie Huang were nearly unstoppable in the build events, while Brandon Lin and the Codebusters squad were heads above the competition.</p>
+        <p><strong>Lunar</strong> finished 11th, with standout moments including a <strong>1st in Dynamic Planet</strong> and <strong>2nd in Codebusters</strong> — Jennifer Xu and the crew showed they belong on any invitational stage.</p>
+        <p>The team celebrated afterward with an unofficial "Flint Hill Pizza Party" tradition. The vibe was immaculate. This win set the tone for the entire rest of the season.</p>
+      </div>
+      <button class="blog-close" onclick="toggleBlog('flinthill')">✕ Close</button>
+    </div>
+
+    <div id="blog-fairfax" class="blog-post">
+      <div class="blog-post-header">
+        <div class="blog-post-emoji">🏛️</div>
+        <div><div class="blog-post-title">Fairfax Invitational</div><div class="blog-post-meta">January 10, 2026 · Fairfax High School · 70 Teams</div></div>
+      </div>
+      <div class="blog-highlight">
+        <span class="blog-highlight-chip" style="background:#e8e8e8;color:#333;">☀️ 2nd Overall / 70 Teams</span>
+        <span class="blog-highlight-chip" style="background:#fff3cc;color:#7a4a00;">☀️ 8× First Place Events</span>
+        <span class="blog-highlight-chip" style="background:#ffe8d6;color:#7a3500;">🌑 3rd — Hovercraft</span>
+      </div>
+      <div class="blog-body">
+        <p>Fairfax was massive — 70 teams from across Virginia and the mid-Atlantic region. This was the biggest invitational of the year, and Solar showed up to compete.</p>
+        <p>Solar finished <strong>2nd overall</strong>, racking up an eye-popping <strong>eight first-place event finishes</strong>: Astronomy, Chemistry Lab, Codebusters, Dynamic Planet, Experimental Design, Machines, Remote Sensing, and Rocks &amp; Minerals. The consistency was remarkable across every discipline.</p>
+        <p><strong>Eclipse</strong> had a surprise highlight, grabbing <strong>3rd in Hovercraft</strong> — Artem Godlevskii and Holden Louie put in serious build work to pull that off in such a large field.</p>
+        <p>Missing the top spot by a razor-thin margin stung a little, but the team left Fairfax with sky-high confidence. Everyone could see that Solar was a legitimate state contender.</p>
+      </div>
+      <button class="blog-close" onclick="toggleBlog('fairfax')">✕ Close</button>
+    </div>
+
+    <div id="blog-vtech" class="blog-post">
+      <div class="blog-post-header">
+        <div class="blog-post-emoji">🦃</div>
+        <div><div class="blog-post-title">Virginia Tech Invitational</div><div class="blog-post-meta">January 31, 2026 · Virginia Tech, Blacksburg VA</div></div>
+      </div>
+      <div class="blog-highlight">
+        <span class="blog-highlight-chip" style="background:#ffe8d6;color:#7a3500;">☀️ 4th Overall / 32 Teams</span>
+        <span class="blog-highlight-chip" style="background:#fff3cc;color:#7a4a00;">☀️ 3× First Place Events</span>
+        <span class="blog-highlight-chip" style="background:#e8e8e8;color:#333;">🌑 2nd — Entomology</span>
+        <span class="blog-highlight-chip" style="background:#dde4ff;color:#1a2a99;">🌙 12th Overall</span>
+      </div>
+      <div class="blog-body">
+        <p>Virginia Tech Invitational is always one of the toughest fields of the year, with elite programs from all over the state descending on Blacksburg. Solar went <strong>4th overall</strong> in a field packed with state-caliber competition.</p>
+        <p>Solar's brightest moments came in <strong>Codebusters (1st), Entomology (1st), and Rocks &amp; Minerals (1st)</strong> — three dominant performances that showed the depth of the team's study event preparation. The Huang twins delivered another strong Helicopter result, and the Exp. Design squad shone with a 2nd place.</p>
+        <p><strong>Eclipse</strong> had a remarkable moment: <strong>2nd place in Entomology</strong> — Alexander Yu and Chunjie Huang couldn't be stopped on bug ID. Eclipse also grabbed <strong>4th in Hovercraft</strong>.</p>
+        <p><strong>Lunar</strong> ended at 12th overall, with a <strong>4th place in Anatomy &amp; Physiology</strong> leading the way. The team was building chemistry at just the right time heading into regionals.</p>
+        <p>The Blacksburg trip also doubled as a bonding experience — long van rides, late-night Cookout runs, and the shared intensity of competing at a college campus made it unforgettable.</p>
+      </div>
+      <button class="blog-close" onclick="toggleBlog('vtech')">✕ Close</button>
+    </div>
+
+    <div id="blog-princeton" class="blog-post">
+      <div class="blog-post-header">
+        <div class="blog-post-emoji">🎓</div>
+        <div><div class="blog-post-title">Princeton Invitational</div><div class="blog-post-meta">February 7, 2026 · Princeton University, NJ</div></div>
+      </div>
+      <div class="blog-highlight">
+        <span class="blog-highlight-chip" style="background:#ffe8d6;color:#7a3500;">☀️ 3rd — Dynamic Planet</span>
+        <span class="blog-highlight-chip" style="background:#ffe8d6;color:#7a3500;">☀️ 3rd — Rocks &amp; Minerals</span>
+        <span class="blog-highlight-chip" style="background:#e0eaff;color:#2233aa;">☀️ Top 10 in 8 Events</span>
+      </div>
+      <div class="blog-body">
+        <p>Princeton Invitational is one of the most prestigious invitationals in the country — hosted at Princeton University and drawing teams from up and down the East Coast. Solar made the trip to New Jersey and competed in a truly elite field.</p>
+        <p>Linus Koepcke delivered back-to-back podium finishes, claiming <strong>3rd in both Dynamic Planet and Rocks &amp; Minerals</strong>. The Codebusters squad landed <strong>6th</strong> in an absolutely stacked bracket, and Ivy Xu and Clara Yin put up a <strong>6th in Fermi Questions</strong> in their first time competing in that event.</p>
+        <p>Competing at Princeton is an experience unlike any other — the campus is beautiful, the competition is fierce, and the prestige is real. Solar held their own against some of the best programs in the country, which gave everyone a huge confidence boost heading into regionals just three weeks later.</p>
+      </div>
+      <button class="blog-close" onclick="toggleBlog('princeton')">✕ Close</button>
+    </div>
+
+    <div id="blog-regionals" class="blog-post">
+      <div class="blog-post-header">
+        <div class="blog-post-emoji">🏅</div>
+        <div><div class="blog-post-title">Virginia Regional Tournament @ UMW</div><div class="blog-post-meta">February 28, 2026 · University of Mary Washington, Fredericksburg VA</div></div>
+      </div>
+      <div class="blog-highlight">
+        <span class="blog-highlight-chip" style="background:#e8e8e8;color:#333;">☀️ 6th Overall</span>
+        <span class="blog-highlight-chip" style="background:#fff3cc;color:#7a4a00;">☀️ 2× First Place</span>
+        <span class="blog-highlight-chip" style="background:#e8e8e8;color:#333;">☀️ Qualified for States</span>
+        <span class="blog-highlight-chip" style="background:#ffe8d6;color:#7a3500;">🌙 3rd — Entomology</span>
+      </div>
+      <div class="blog-body">
+        <p>Regionals was the moment everything was building toward. Held at the University of Mary Washington in Fredericksburg, this was the official Virginia regional qualifier, and every team left it all on the floor.</p>
+        <p><strong>Solar qualified for States with a 6th place finish</strong>, highlighted by <strong>1st place in Codebusters</strong> (Brandon Lin, Clara Yin, and Ivy Xu were incredible under pressure) and <strong>1st in Rocks &amp; Minerals</strong> (Linus Koepcke and Alexander Yu continued their dominance).</p>
+        <p><strong>Lunar</strong> had a standout moment with a <strong>3rd place in Entomology</strong>, a fantastic result that showed how much that team had grown over the season. They finished 21st overall.</p>
+        <p><strong>Eclipse</strong> also showed up, with a <strong>7th in Eng. CAD</strong> and <strong>8th in Anatomy &amp; Physiology</strong> — strong finishes that the team was proud of.</p>
+        <p>The energy in the van on the way home was electric. Solar was headed to States. The whole team knew something special was within reach.</p>
+      </div>
+      <button class="blog-close" onclick="toggleBlog('regionals')">✕ Close</button>
+    </div>
+
+    <div id="blog-states" class="blog-post">
+      <div class="blog-post-header">
+        <div class="blog-post-emoji">🥈</div>
+        <div><div class="blog-post-title">Virginia State Tournament @ UVA</div><div class="blog-post-meta">March 21, 2026 · University of Virginia, Charlottesville VA</div></div>
+      </div>
+      <div class="blog-highlight">
+        <span class="blog-highlight-chip" style="background:#e8e8e8;color:#333;">☀️ 2nd in Virginia</span>
+        <span class="blog-highlight-chip" style="background:#fff3cc;color:#7a4a00;">☀️ 4× First Place Events</span>
+        <span class="blog-highlight-chip" style="background:#e8e8e8;color:#333;">☀️ Best Finish in Oakton History</span>
+      </div>
+      <div class="blog-body">
+        <p>This is the one. Virginia States at the University of Virginia — the most important tournament of the year, and the best day in Oakton Scioly history.</p>
+        <p>Solar finished <strong>2nd in the entire state of Virginia</strong>. Let that sink in. Out of every Science Olympiad team in Virginia, Solar was second best. It is the highest placement any Oakton Scioly team has ever achieved.</p>
+        <p>The event performances were breathtaking. Solar claimed <strong>1st place in four events: Rocks &amp; Minerals, Codebusters, Entomology, and Water Quality</strong>. Four state champions in one tournament. Linus, Brandon, Sara, Sophia, and the whole squad were absolutely locked in.</p>
+        <p>They also podiumed in <strong>Chemistry Lab (2nd), Dynamic Planet (2nd), Machines (2nd), Remote Sensing (2nd), Experimental Design (3rd), and Materials Science (3rd)</strong> — consistent excellence across every discipline.</p>
+        <p>The atmosphere at UVA that day was something the team will never forget. Parents, friends, alumni — everyone came out. When the final results were announced and Solar's name appeared at #2, the roar was deafening.</p>
+        <p>Thank you to every captain, every member, every coach, and every parent who made this season possible. <strong>This was Oakton Scioly's year.</strong> ☀️🥈</p>
+      </div>
+      <button class="blog-close" onclick="toggleBlog('states')">✕ Close</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- TRYOUTS -->
+<div id="tab-tryouts" class="tab-content">
+  <div class="section">
+    <div class="tryout-hero">
+      <h2>🎯 Tryout Information</h2>
+      <p>Interested in joining Oakton Science Olympiad? Here's everything you need to know about tryouts for the 2026–2027 season. We welcome students of all backgrounds : passion for science and dedication to learning are what matter most!</p>
+    </div>
+
+    <div class="tryout-banner">
+      <div class="tryout-banner-icon">📅</div>
+      <div class="tryout-banner-text">
+        <strong>Tryout Date: TBD — Fall 2026</strong>
+        Keep an eye on our Instagram @oaktonscioly and check your school email for announcements. Tryouts typically happen in September or October.
+      </div>
+    </div>
+
+    <div class="tryout-grid">
+      <div class="tryout-card">
+        <div class="tryout-icon">🧬</div>
+        <div class="tryout-title">Who Can Try Out?</div>
+        <p>Any currently enrolled Oakton High School student in grades 9–12 is eligible to try out. No prior Science Olympiad experience is required — we love teaching new members!</p>
+      </div>
+      <div class="tryout-card">
+        <div class="tryout-icon">📋</div>
+        <div class="tryout-title">What to Expect</div>
+        <ul>
+          <li>A written science knowledge test covering biology, chemistry, physics, and earth science</li>
+          <li>An optional build/engineering challenge component</li>
+          <li>Interview or brief conversation with captains</li>
+          <li>Results announced within 1–2 weeks</li>
+        </ul>
+      </div>
+      <div class="tryout-card">
+        <div class="tryout-icon">📚</div>
+        <div class="tryout-title">How to Prepare</div>
+        <ul>
+          <li>Browse the <a href="https://scioly.org/wiki" target="_blank" style="color:#2244cc;">Scioly.org wiki</a> for event overviews</li>
+          <li>Review current Science Olympiad events on <a href="https://www.soinc.org" target="_blank" style="color:#2244cc;">soinc.org</a></li>
+          <li>Practice with past tests from <a href="https://scioly.org/tests" target="_blank" style="color:#2244cc;">scioly.org/tests</a></li>
+          <li>Brush up on general STEM concepts from your classes</li>
+        </ul>
+      </div>
+      <div class="tryout-card">
+        <div class="tryout-icon">🏗️</div>
+        <div class="tryout-title">Build Event Interest?</div>
+        <p>If you're interested in engineering events (helicopter, hovercraft, boomilever, etc.), mention it during tryouts! Prior experience with building, robotics, or engineering is a big plus but not required.</p>
+      </div>
+      <div class="tryout-card">
+        <div class="tryout-icon">🤝</div>
+        <div class="tryout-title">Team Structure</div>
+        <p>Oakton Scioly has three teams: <strong>Solar ☀️</strong>, <strong>Lunar 🌙</strong>, <strong>Eclipse 🌑</strong>. Each team has 15 members and competes in invitationals and the regional tournament. Solar also competes at States.</p>
+      </div>
+      <div class="tryout-card">
+        <div class="tryout-icon">💬</div>
+        <div class="tryout-title">Questions?</div>
+        <p>Reach out to us on Instagram <strong>@oaktonscioly</strong> or email us at <strong>ohssciol@gmail.com</strong>. Our captains are happy to answer questions and help you prepare. Don't be shy we were all new once!</p>
+      </div>
+    </div>
+
+    <div class="tryout-card" style="margin-top:0;">
+      <div class="tryout-icon">⏰</div>
+      <div class="tryout-title">Time Commitment</div>
+      <p>Science Olympiad is a serious commitment but an incredibly rewarding one. Here's a rough breakdown of what to expect:</p>
+      <ul style="margin-top:0.5rem;">
+        <li><strong>Practices:</strong> 1–2 weekly meetings after school, plus independent study with your event partner</li>
+        <li><strong>Invitationals:</strong> 4–6 full-day Saturday competitions from November through February</li>
+        <li><strong>Regionals:</strong> One full weekend day in late February</li>
+        <li><strong>States (Solar only):</strong> One full day in March at a Virginia university</li>
+        <li><strong>Build events</strong> require additional time outside of meetings to build and test devices</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
 <!-- RESOURCES -->
 <div id="tab-resources" class="tab-content">
   <div class="section">
     <div class="section-title">📚 Resources</div>
     <div class="resources-grid">
-      <a href="https://www.soinc.org/" target="_blank" class="resource-card">
-        <div class="resource-icon">🧪</div>
-        <div class="resource-title">Science Olympiad Official</div>
-        <div class="resource-desc">Official rules, event details, and national competition info from Science Olympiad Inc.</div>
-      </a>
-      <a href="https://www.virginiaso.org/" target="_blank" class="resource-card">
-        <div class="resource-icon">🐦</div>
-        <div class="resource-title">Virginia Science Olympiad</div>
-        <div class="resource-desc">VASO — Virginia's official Scioly organization, regional and state tournament info.</div>
-      </a>
-      <a href="https://scioly.org/wiki/" target="_blank" class="resource-card">
-        <div class="resource-icon">📖</div>
-        <div class="resource-title">Scioly.org Wiki</div>
-        <div class="resource-desc">Community-built study guides, event tips, and resources for every Scioly event.</div>
-      </a>
-      <a href="https://scioly.org/tests/" target="_blank" class="resource-card">
-        <div class="resource-icon">📝</div>
-        <div class="resource-title">Past Tests</div>
-        <div class="resource-desc">Hundreds of past invitational and tournament tests to practice with from scioly.org.</div>
-      </a>
-      <a href="https://www.duosmium.org/" target="_blank" class="resource-card">
-        <div class="resource-icon">📊</div>
-        <div class="resource-title">Duosmium Results</div>
-        <div class="resource-desc">Detailed invitational and tournament results and standings from across the country.</div>
-      </a>
-      <a href="https://www.instagram.com/oaktonscioly" target="_blank" class="resource-card">
-        <div class="resource-icon">📸</div>
-        <div class="resource-title">Our Instagram</div>
-        <div class="resource-desc">Follow @oaktonscioly for updates, competition photos, and team news!</div>
-      </a>
+      <a href="https://www.soinc.org/" target="_blank" class="resource-card"><div class="resource-icon">🧪</div><div class="resource-title">Science Olympiad Official</div><div class="resource-desc">Official rules, event details, and national competition info from Science Olympiad Inc.</div></a>
+      <a href="https://www.virginiaso.org/" target="_blank" class="resource-card"><div class="resource-icon">🐦</div><div class="resource-title">Virginia Science Olympiad</div><div class="resource-desc">VASO — Virginia's official Scioly organization, regional and state tournament info.</div></a>
+      <a href="https://scioly.org/wiki/" target="_blank" class="resource-card"><div class="resource-icon">📖</div><div class="resource-title">Scioly.org Wiki</div><div class="resource-desc">Community-built study guides, event tips, and resources for every Scioly event.</div></a>
+      <a href="https://scioly.org/tests/" target="_blank" class="resource-card"><div class="resource-icon">📝</div><div class="resource-title">Past Tests</div><div class="resource-desc">Hundreds of past invitational and tournament tests to practice with from scioly.org.</div></a>
+      <a href="https://www.duosmium.org/" target="_blank" class="resource-card"><div class="resource-icon">📊</div><div class="resource-title">Duosmium Results</div><div class="resource-desc">Detailed invitational and tournament results and standings from across the country.</div></a>
+      <a href="https://www.instagram.com/oaktonscioly" target="_blank" class="resource-card"><div class="resource-icon">📸</div><div class="resource-title">Our Instagram</div><div class="resource-desc">Follow @oaktonscioly for updates, competition photos, and team news!</div></a>
     </div>
   </div>
 </div>
- 
+
 <!-- ABOUT -->
 <div id="tab-about" class="tab-content">
   <div class="section">
-    <div class="about-hero">
-      <h2>About Oakton Scioly</h2>
-      <p>Oakton Science Olympiad is a student-led STEM competition team focused on science, engineering, inquiry, and teamwork.</p>
-    </div>
+    <div class="about-hero"><h2>About Oakton Scioly</h2><p>Oakton Science Olympiad is a student-led STEM competition team focused on science, engineering, inquiry, and teamwork.</p></div>
     <div class="about-grid">
-      <div class="about-card">
-        <div class="about-icon">🧪</div>
-        <div class="about-title">Who We Are</div>
-        <p>Oakton Scioly competes in invitationals, regional tournaments, and the Virginia State Tournament every season. Our members work across biology, chemistry, physics, engineering, earth science, and coding events. These events require constant studying, immense passion and focus.</p>
-      </div>
-      <div class="about-card">
-        <div class="about-icon">🏆</div>
-        <div class="about-title">Achievements</div>
-        <p>During the 2025–2026 season, Solar placed 2nd at Virginia States, the best finish in Oakton Scioly history. Our team has consistently been placing at top tier invitationals such as Princeton and VTech.</p>
-      </div>
-      <div class="about-card">
-        <div class="about-icon">⚙️</div>
-        <div class="about-title">Build Events</div>
-        <p>Members design and test engineering devices including helicopters, electric vehicles, hovercrafts, boomilevers, and robot systems.</p>
-      </div>
-      <div class="about-card">
-        <div class="about-icon">📖</div>
-        <div class="about-title">Study Events</div>
-        <p>Members study events from Earth Sciences (Entomology, Dynamic Planet, Water Quality) to the human body (Anatomy), outside of this world (Astronomy). In these events members will build binders and cheat sheets to help them during the test at the competition.</p>
-      </div>
-      <div class="about-card">
-        <div class="about-icon">🌌</div>
-        <div class="about-title">Team Culture</div>
-        <p>Beyond competing, Oakton Scioly is a community built on collaboration, late-night studying (on discord), inside jokes, snacks, and teamwork. We love one another very much, its a second family to all of us.</p>
-      </div>
+      <div class="about-card"><div class="about-icon">🧪</div><div class="about-title">Who We Are</div><p>Oakton Scioly competes in invitationals, regional tournaments, and the Virginia State Tournament every season. Our members work across biology, chemistry, physics, engineering, earth science, and coding events.</p></div>
+      <div class="about-card"><div class="about-icon">🏆</div><div class="about-title">Achievements</div><p>During the 2025–2026 season, Solar placed 2nd at Virginia States, the best finish in Oakton Scioly history. Our team consistently places at top tier invitationals such as Princeton and VTech.</p></div>
+      <div class="about-card"><div class="about-icon">⚙️</div><div class="about-title">Build Events</div><p>Members design and test engineering devices including helicopters, electric vehicles, hovercrafts, boomilevers, and robot systems.</p></div>
+      <div class="about-card"><div class="about-icon">📖</div><div class="about-title">Study Events</div><p>Members study events from Earth Sciences (Entomology, Dynamic Planet, Water Quality) to the human body (Anatomy) and beyond (Astronomy). Members build binders and reference sheets for competition.</p></div>
+      <div class="about-card"><div class="about-icon">🌌</div><div class="about-title">Team Culture</div><p>Beyond competing, Oakton Scioly is a community built on collaboration, late-night studying (on Discord), inside jokes, snacks, and teamwork. It's a second family to all of us.</p></div>
     </div>
   </div>
 </div>
- 
+
 </div><!-- end .content -->
- 
-<!-- FOOTER -->
+
 <footer class="footer">
   <div class="footer-content">
     <div class="footer-title">Oakton HS Science Olympiad</div>
@@ -686,12 +848,12 @@
       <a href="https://www.soinc.org/" target="_blank" class="footer-link">🧪 Science Olympiad</a>
       <a href="mailto:ohssciol@gmail.com" class="footer-link">✉️ Gmail</a>
       <a href="https://www.virginiaso.org/" target="_blank" class="footer-link">🐦 VASO</a>
-      <a href = "https://github.com/WhosArjun/Oakton-Scioly-Website" target = "_blank" class = "footer-link"> Oakton Scioly Website Github</a>
+      <a href="https://github.com/WhosArjun/Oakton-Scioly-Website" target="_blank" class="footer-link">💻 GitHub</a>
     </div>
     <div class="footer-bottom">© 2026 Oakton Scioly · Built for the 2025–2026 season</div>
   </div>
 </footer>
- 
+
 <script>
 // ── TABS & FILTERS ──
 let currentTeam = 'all';
@@ -725,13 +887,26 @@ function applyTeamFilter(team) {
       block.querySelectorAll('.event-card').forEach(c => c.style.display = '');
     } else {
       block.style.display = block.dataset.teams && block.dataset.teams.includes(team) ? '' : 'none';
-      block.querySelectorAll('.event-card').forEach(c => {
-        c.style.display = c.dataset.team === team ? '' : 'none';
-      });
+      block.querySelectorAll('.event-card').forEach(c => { c.style.display = c.dataset.team === team ? '' : 'none'; });
     }
   });
 }
- 
+
+// ── BLOG TOGGLE ──
+function toggleBlog(id) {
+  const post = document.getElementById('blog-' + id);
+  const btn = document.querySelector(`[onclick="toggleBlog('${id}')"]`);
+  const isOpen = post.classList.contains('visible');
+  // close all
+  document.querySelectorAll('.blog-post').forEach(p => p.classList.remove('visible'));
+  document.querySelectorAll('.blog-btn').forEach(b => b.classList.remove('active-post'));
+  if (!isOpen) {
+    post.classList.add('visible');
+    btn.classList.add('active-post');
+    setTimeout(() => post.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  }
+}
+
 // ── HERO STARS ──
 const starsEl = document.getElementById('stars');
 for (let i = 0; i < 70; i++) {
@@ -740,200 +915,89 @@ for (let i = 0; i < 70; i++) {
   s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
   starsEl.appendChild(s);
 }
- 
+
 // ── SCIOLY EVENT CLOUDS ──
 const events = [
-  { label: 'Astronomy',        emoji: '🔭' },
-  { label: 'Codebusters',      emoji: '🔐' },
-  { label: 'Dynamic Planet',   emoji: '🌍' },
-  { label: 'Chemistry Lab',    emoji: '🧪' },
-  { label: 'Entomology',       emoji: '🐛' },
-  { label: 'Forensics',        emoji: '🔍' },
-  { label: 'Machines',         emoji: '⚙️' },
-  { label: 'Remote Sensing',   emoji: '📡' },
-  { label: 'Rocks & Minerals', emoji: '🪨' },
-  { label: 'Exp. Design',      emoji: '🧬' },
-  { label: 'Helicopter',       emoji: '🚁' },
-  { label: 'Hovercraft',       emoji: '🛸' },
-  { label: 'Boomilever',       emoji: '🏗️' },
-  { label: 'Bungee Drop',      emoji: '🪢' },
-  { label: 'Circuit Lab',      emoji: '⚡' },
-  { label: 'Designer Genes',   emoji: '🧫' },
-  { label: 'Disease Detectives', emoji: '🦠' },
-  { label: 'Eng. CAD',         emoji: '📐' },
-  { label: 'Materials Science', emoji: '🔬' },
-  { label: 'Water Quality',    emoji: '💧' },
-  { label: 'Fermi Questions',  emoji: '🔢' },
-  { label: 'Robot Tour',       emoji: '🤖' },
-  { label: 'Anatomy & Phys',   emoji: '🫀' },
-  { label: 'Protein Modeling', emoji: '🧩' },
-  { label: 'Cyber Security',   emoji: '🛡️' },
-  { label: 'Electric Vehicle', emoji: '🚗' },
+  {label:'Astronomy',emoji:'🔭'},{label:'Codebusters',emoji:'🔐'},{label:'Dynamic Planet',emoji:'🌍'},
+  {label:'Chemistry Lab',emoji:'🧪'},{label:'Entomology',emoji:'🐛'},{label:'Forensics',emoji:'🔍'},
+  {label:'Machines',emoji:'⚙️'},{label:'Remote Sensing',emoji:'📡'},{label:'Rocks & Minerals',emoji:'🪨'},
+  {label:'Exp. Design',emoji:'🧬'},{label:'Helicopter',emoji:'🚁'},{label:'Hovercraft',emoji:'🛸'},
+  {label:'Boomilever',emoji:'🏗️'},{label:'Bungee Drop',emoji:'🪢'},{label:'Circuit Lab',emoji:'⚡'},
+  {label:'Designer Genes',emoji:'🧫'},{label:'Disease Detectives',emoji:'🦠'},{label:'Eng. CAD',emoji:'📐'},
+  {label:'Materials Science',emoji:'🔬'},{label:'Water Quality',emoji:'💧'},{label:'Fermi Questions',emoji:'🔢'},
+  {label:'Robot Tour',emoji:'🤖'},{label:'Anatomy & Phys',emoji:'🫀'},{label:'Protein Modeling',emoji:'🧩'},
+  {label:'Cyber Security',emoji:'🛡️'},{label:'Electric Vehicle',emoji:'🚗'},
 ];
- 
 const cloudShapes = [
-  { w: 110, h: 38, bumps: [{x:20,y:-22,r:26},{x:50,y:-30,r:32},{x:80,y:-20,r:24}] },
-  { w: 90,  h: 32, bumps: [{x:25,y:-18,r:22},{x:55,y:-26,r:28},{x:78,y:-16,r:20}] },
-  { w: 130, h: 42, bumps: [{x:18,y:-24,r:28},{x:45,y:-34,r:36},{x:72,y:-28,r:30},{x:90,y:-18,r:22}] },
+  {w:110,h:38,bumps:[{x:20,r:26},{x:50,r:32},{x:80,r:24}]},
+  {w:90,h:32,bumps:[{x:25,r:22},{x:55,r:28},{x:78,r:20}]},
+  {w:130,h:42,bumps:[{x:18,r:28},{x:45,r:36},{x:72,r:30},{x:90,r:22}]},
 ];
- 
 const sky = document.getElementById('sky');
- 
-function spawnCloud(eventData, delayMs) {
-  const shape = cloudShapes[Math.floor(Math.random() * cloudShapes.length)];
-  const scale = 0.8 + Math.random() * 0.7;
-  const top = 8 + Math.random() * 82;
-  const duration = 28 + Math.random() * 40;
- 
-  const cloud = document.createElement('div');
-  cloud.className = 'cloud';
-  cloud.style.cssText = `top:${top}%;animation:floatCloud ${duration}s linear ${delayMs}ms infinite;filter:drop-shadow(0 4px 8px rgba(100,140,200,0.18));`;
- 
+function spawnCloud(ev, delayMs) {
+  const shape = cloudShapes[Math.floor(Math.random()*cloudShapes.length)];
+  const sc = 0.8+Math.random()*0.7, top = 8+Math.random()*82, dur = 28+Math.random()*40;
+  const cloud = document.createElement('div'); cloud.className = 'cloud';
+  cloud.style.cssText = `top:${top}%;animation:floatCloud ${dur}s linear ${delayMs}ms infinite;filter:drop-shadow(0 4px 8px rgba(100,140,200,0.18));`;
   const body = document.createElement('div');
-  body.className = 'cloud-body';
-  body.style.cssText = `position:relative;width:${shape.w*scale}px;height:${shape.h*scale}px;`;
- 
+  body.style.cssText = `position:relative;width:${shape.w*sc}px;height:${shape.h*sc}px;`;
   const base = document.createElement('div');
-  base.style.cssText = `position:absolute;bottom:0;left:0;width:${shape.w*scale}px;height:${shape.h*scale}px;border-radius:50px;background:white;`;
+  base.style.cssText = `position:absolute;bottom:0;left:0;width:${shape.w*sc}px;height:${shape.h*sc}px;border-radius:50px;background:white;`;
   body.appendChild(base);
- 
   shape.bumps.forEach(b => {
-    const bump = document.createElement('div');
-    const r = b.r * scale;
-    bump.style.cssText = `position:absolute;width:${r*2}px;height:${r*2}px;border-radius:50%;background:white;left:${(b.x/100)*shape.w*scale-r}px;bottom:${shape.h*scale-8*scale}px;`;
+    const bump = document.createElement('div'); const r = b.r*sc;
+    bump.style.cssText = `position:absolute;width:${r*2}px;height:${r*2}px;border-radius:50%;background:white;left:${(b.x/100)*shape.w*sc-r}px;bottom:${shape.h*sc-8*sc}px;`;
     body.appendChild(bump);
   });
- 
   const inner = document.createElement('div');
   inner.style.cssText = `position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;`;
- 
-  const em = document.createElement('div');
-  em.style.cssText = `font-size:${Math.round(14*scale)}px;line-height:1;`;
-  em.textContent = eventData.emoji;
- 
-  const lbl = document.createElement('div');
-  lbl.style.cssText = `font-family:'Fredoka One',cursive;font-size:${Math.round(9*scale)}px;color:#5577aa;white-space:nowrap;`;
-  lbl.textContent = eventData.label;
- 
-  inner.appendChild(em);
-  inner.appendChild(lbl);
-  body.appendChild(inner);
-  cloud.appendChild(body);
-  sky.appendChild(cloud);
+  const em = document.createElement('div'); em.style.cssText = `font-size:${Math.round(14*sc)}px;line-height:1;`; em.textContent = ev.emoji;
+  const lbl = document.createElement('div'); lbl.style.cssText = `font-family:'Fredoka One',cursive;font-size:${Math.round(9*sc)}px;color:#5577aa;white-space:nowrap;`; lbl.textContent = ev.label;
+  inner.appendChild(em); inner.appendChild(lbl); body.appendChild(inner); cloud.appendChild(body); sky.appendChild(cloud);
 }
- 
 let delay = 0;
-for (let i = 0; i < 42; i++) {
-  spawnCloud(events[i % events.length], delay);
-  delay += 1600 + Math.random() * 1800;
-}
- 
+for (let i = 0; i < 42; i++) { spawnCloud(events[i%events.length], delay); delay += 1600+Math.random()*1800; }
+
 // ── CAT ON PAPER AIRPLANE ──
 function spawnCatPlane() {
-  // pick a random vertical position (15–75% of viewport)
-  const top = 15 + Math.random() * 60;
-  // random duration 7–11s
-  const dur = 7 + Math.random() * 4;
-  // random scale 0.85–1.2
-  const sc = 0.85 + Math.random() * 0.35;
- 
+  const top = 15+Math.random()*60, dur = 7+Math.random()*4, sc = 0.85+Math.random()*0.35;
   const wrapper = document.createElement('div');
-  wrapper.style.cssText = `
-    position:fixed;
-    top:${top}vh;
-    left:110vw;
-    z-index:9999;
-    pointer-events:none;
-    animation:catFly ${dur}s linear forwards;
-    transform-origin:center center;
-  `;
- 
-  // SVG: paper airplane + cat riding on top
-  wrapper.innerHTML = `
-    <svg width="${Math.round(160*sc)}" height="${Math.round(110*sc)}"
-         viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
- 
-      <!-- PAPER AIRPLANE -->
-      <!-- main body -->
-      <polygon points="10,70 150,45 10,20" fill="#e8f0ff" stroke="#99aadd" stroke-width="1.5"/>
-      <!-- bottom flap -->
-      <polygon points="10,70 80,55 10,20" fill="#ccd8f8" stroke="#99aadd" stroke-width="1"/>
-      <!-- fold line -->
-      <line x1="10" y1="45" x2="150" y2="45" stroke="#99aadd" stroke-width="0.8" stroke-dasharray="4,3"/>
- 
-      <!-- CAT sitting on top of plane wing -->
-      <!-- body -->
-      <ellipse cx="62" cy="28" rx="16" ry="13" fill="#f5c842"/>
-      <!-- head -->
-      <ellipse cx="62" cy="13" rx="12" ry="11" fill="#f5c842"/>
-      <!-- ears -->
-      <polygon points="52,6 55,16 48,16" fill="#f5c842"/>
-      <polygon points="53,8 56,15 50,15" fill="#f8b4c0"/>
-      <polygon points="72,6 69,16 76,16" fill="#f5c842"/>
-      <polygon points="71,8 68,15 74,15" fill="#f8b4c0"/>
-      <!-- face -->
-      <!-- eyes (wide open, excited) -->
-      <circle cx="57" cy="12" r="3.5" fill="white"/>
-      <circle cx="67" cy="12" r="3.5" fill="white"/>
-      <circle cx="58" cy="12.5" r="2" fill="#222"/>
-      <circle cx="68" cy="12.5" r="2" fill="#222"/>
-      <!-- eye shine -->
-      <circle cx="59" cy="11.5" r="0.8" fill="white"/>
-      <circle cx="69" cy="11.5" r="0.8" fill="white"/>
-      <!-- nose -->
-      <ellipse cx="62" cy="17" rx="2" ry="1.2" fill="#f87a8a"/>
-      <!-- mouth -->
-      <path d="M59,18.5 Q62,21 65,18.5" fill="none" stroke="#c04060" stroke-width="1"/>
-      <!-- blush -->
-      <ellipse cx="54" cy="17" rx="3" ry="1.8" fill="#f8a0b0" opacity="0.5"/>
-      <ellipse cx="70" cy="17" rx="3" ry="1.8" fill="#f8a0b0" opacity="0.5"/>
-      <!-- whiskers left -->
-      <line x1="44" y1="15" x2="57" y2="17" stroke="#aaa" stroke-width="0.8"/>
-      <line x1="44" y1="18" x2="57" y2="18" stroke="#aaa" stroke-width="0.8"/>
-      <!-- whiskers right -->
-      <line x1="80" y1="15" x2="67" y2="17" stroke="#aaa" stroke-width="0.8"/>
-      <line x1="80" y1="18" x2="67" y2="18" stroke="#aaa" stroke-width="0.8"/>
-      <!-- paws gripping the plane edge -->
-      <ellipse cx="50" cy="39" rx="6" ry="4" fill="#f5c842"/>
-      <ellipse cx="74" cy="39" rx="6" ry="4" fill="#f5c842"/>
-      <!-- little toe lines -->
-      <line x1="47" y1="41" x2="47" y2="43" stroke="#e0a800" stroke-width="0.8"/>
-      <line x1="50" y1="42" x2="50" y2="44" stroke="#e0a800" stroke-width="0.8"/>
-      <line x1="53" y1="41" x2="53" y2="43" stroke="#e0a800" stroke-width="0.8"/>
-      <line x1="71" y1="41" x2="71" y2="43" stroke="#e0a800" stroke-width="0.8"/>
-      <line x1="74" y1="42" x2="74" y2="44" stroke="#e0a800" stroke-width="0.8"/>
-      <line x1="77" y1="41" x2="77" y2="43" stroke="#e0a800" stroke-width="0.8"/>
-      <!-- tail curling up behind -->
-      <path d="M78,35 Q100,10 90,2 Q82,-4 78,5" fill="none" stroke="#f5c842" stroke-width="3.5" stroke-linecap="round"/>
-      <!-- scarf / wind effect lines -->
-      <path d="M40,10 Q30,8 20,12" fill="none" stroke="#ffaacc" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-      <path d="M42,14 Q28,14 18,18" fill="none" stroke="#ffaacc" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-    </svg>
-  `;
- 
+  wrapper.style.cssText = `position:fixed;top:${top}vh;left:110vw;z-index:9999;pointer-events:none;animation:catFly ${dur}s linear forwards;transform-origin:center center;`;
+  wrapper.innerHTML = `<svg width="${Math.round(160*sc)}" height="${Math.round(110*sc)}" viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="10,70 150,45 10,20" fill="#e8f0ff" stroke="#99aadd" stroke-width="1.5"/>
+    <polygon points="10,70 80,55 10,20" fill="#ccd8f8" stroke="#99aadd" stroke-width="1"/>
+    <line x1="10" y1="45" x2="150" y2="45" stroke="#99aadd" stroke-width="0.8" stroke-dasharray="4,3"/>
+    <ellipse cx="62" cy="28" rx="16" ry="13" fill="#f5c842"/>
+    <ellipse cx="62" cy="13" rx="12" ry="11" fill="#f5c842"/>
+    <polygon points="52,6 55,16 48,16" fill="#f5c842"/><polygon points="53,8 56,15 50,15" fill="#f8b4c0"/>
+    <polygon points="72,6 69,16 76,16" fill="#f5c842"/><polygon points="71,8 68,15 74,15" fill="#f8b4c0"/>
+    <circle cx="57" cy="12" r="3.5" fill="white"/><circle cx="67" cy="12" r="3.5" fill="white"/>
+    <circle cx="58" cy="12.5" r="2" fill="#222"/><circle cx="68" cy="12.5" r="2" fill="#222"/>
+    <circle cx="59" cy="11.5" r="0.8" fill="white"/><circle cx="69" cy="11.5" r="0.8" fill="white"/>
+    <ellipse cx="62" cy="17" rx="2" ry="1.2" fill="#f87a8a"/>
+    <path d="M59,18.5 Q62,21 65,18.5" fill="none" stroke="#c04060" stroke-width="1"/>
+    <ellipse cx="54" cy="17" rx="3" ry="1.8" fill="#f8a0b0" opacity="0.5"/>
+    <ellipse cx="70" cy="17" rx="3" ry="1.8" fill="#f8a0b0" opacity="0.5"/>
+    <line x1="44" y1="15" x2="57" y2="17" stroke="#aaa" stroke-width="0.8"/>
+    <line x1="44" y1="18" x2="57" y2="18" stroke="#aaa" stroke-width="0.8"/>
+    <line x1="80" y1="15" x2="67" y2="17" stroke="#aaa" stroke-width="0.8"/>
+    <line x1="80" y1="18" x2="67" y2="18" stroke="#aaa" stroke-width="0.8"/>
+    <ellipse cx="50" cy="39" rx="6" ry="4" fill="#f5c842"/>
+    <ellipse cx="74" cy="39" rx="6" ry="4" fill="#f5c842"/>
+    <path d="M78,35 Q100,10 90,2 Q82,-4 78,5" fill="none" stroke="#f5c842" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M40,10 Q30,8 20,12" fill="none" stroke="#ffaacc" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <path d="M42,14 Q28,14 18,18" fill="none" stroke="#ffaacc" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  </svg>`;
   document.body.appendChild(wrapper);
- 
-  // remove after animation ends
-  setTimeout(() => wrapper.remove(), (dur + 0.5) * 1000);
+  setTimeout(() => wrapper.remove(), (dur+0.5)*1000);
 }
- 
-// inject keyframe once
 const catStyle = document.createElement('style');
-catStyle.textContent = `
-  @keyframes catFly {
-    0%   { left: 110vw; transform: translateY(0px) rotate(-3deg); }
-    20%  { transform: translateY(-12px) rotate(-5deg); }
-    40%  { transform: translateY(6px) rotate(-2deg); }
-    60%  { transform: translateY(-8px) rotate(-4deg); }
-    80%  { transform: translateY(4px) rotate(-2deg); }
-    100% { left: -220px; transform: translateY(0px) rotate(-3deg); }
-  }
-`;
+catStyle.textContent = `@keyframes catFly{0%{left:110vw;transform:translateY(0px) rotate(-3deg);}20%{transform:translateY(-12px) rotate(-5deg);}40%{transform:translateY(6px) rotate(-2deg);}60%{transform:translateY(-8px) rotate(-4deg);}80%{transform:translateY(4px) rotate(-2deg);}100%{left:-220px;transform:translateY(0px) rotate(-3deg);}}`;
 document.head.appendChild(catStyle);
- 
-// fly immediately on load, then every 60 seconds
 spawnCatPlane();
 setInterval(spawnCatPlane, 60000);
 </script>
 </body>
 </html>
+ENDOFFILE
+echo "Done"
