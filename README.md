@@ -3,7 +3,7 @@ Oakton Science Olympiad Website
 Oakton Science Olympiad has never had a website. Hopefully this website can bring more outreach to the club, as we are looking for sponsors. Our team
 is very passionate and has lots of potential, as we have placed highly at various competitions.. With a website we are looking to change this so we can achieve more in the future.
   The website includes 7 tabs : 
-      ok
+      
       Teams : Members of each team, including the captains. The members are split into 3 teams of 15. Solar (Best), Lunar (Second Best), Eclipse (Third Best)
       
       Captains : A funny, short description that speaks a lot about the captains. Even though they are captains with lots of responsibility they are still
