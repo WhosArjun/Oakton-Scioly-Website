@@ -249,6 +249,14 @@
   .tryout-banner-icon{ font-size:1.8rem; flex-shrink:0; }
   .tryout-banner-text{ font-size:0.9rem; color:var(--solar-soft); line-height:1.55; }
   .tryout-banner-text strong{ display:block; font-family:'Fredoka', sans-serif; font-weight:600; font-size:1rem; margin-bottom:2px; color:var(--mist); }
+  .tryout-links{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:1.6rem; }
+  .tryout-link-btn{ display:inline-flex; align-items:center; gap:8px; padding:0.85rem 1.3rem; border-radius:14px; text-decoration:none;
+    font-family:'Plus Jakarta Sans', sans-serif; font-weight:700; font-size:0.9rem; transition:transform 0.15s, box-shadow 0.15s; border:1px solid var(--border);
+  }
+  .tryout-link-btn:hover{ transform:translateY(-2px); }
+  .tryout-link-btn.primary{ background:var(--solar); color:#3a2400; border-color:var(--solar); box-shadow:0 4px 14px rgba(255,192,120,0.35); }
+  .tryout-link-btn.secondary{ background:#ffffff; color:var(--mist); }
+  .tryout-link-icon{ font-size:1.15rem; }
 
   /* ---------- tabs ---------- */
   .tab-content{ display:none; }
@@ -836,6 +844,15 @@
         <p>Interested in joining Oakton Science Olympiad? Here's everything you need to know about tryouts for the 2026-2027 season. We welcome students of all backgrounds; a passion for science and a willingness to put in the work matter far more than experience.</p>
       </div>
 
+      <div class="tryout-links reveal">
+        <a href="https://docs.google.com/document/d/1VUlhgR01TbahLP6sulg4w8mUImOiLaMn48yGySlI8Jc/edit?tab=t.0#heading=h.kumbqxpr0yam" target="_blank" class="tryout-link-btn primary">
+          <span class="tryout-link-icon">&#128218;</span> Tryout Guide
+        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeo533xCdHavb59V8QQldvR4D4VFGAO8R-_2ye3Di9GDT43iw/viewform" target="_blank" class="tryout-link-btn secondary">
+          <span class="tryout-link-icon">&#9997;&#65039;</span> Tryout Sign-Up Form
+        </a>
+      </div>
+
       <div class="tryout-banner reveal" style="background:rgba(169,209,245,0.12);border-color:rgba(169,209,245,0.35);">
         <div class="tryout-banner-icon">&#127881;</div>
         <div class="tryout-banner-text" style="color:var(--lunar-soft);">
@@ -872,6 +889,7 @@
           <div class="tryout-icon">&#128218;</div>
           <div class="tryout-title">How to prepare</div>
           <ul>
+            <li>Read our full <a href="https://docs.google.com/document/d/1VUlhgR01TbahLP6sulg4w8mUImOiLaMn48yGySlI8Jc/edit?tab=t.0#heading=h.kumbqxpr0yam" target="_blank">Tryout Guide</a> for details on format and scoring</li>
             <li>Browse the <a href="https://scioly.org/wiki" target="_blank">Scioly.org wiki</a> for event overviews</li>
             <li>Review current Science Olympiad events on <a href="https://www.soinc.org" target="_blank">soinc.org</a></li>
             <li>Practice with past tests from <a href="https://scioly.org/tests" target="_blank">scioly.org/tests</a></li>
